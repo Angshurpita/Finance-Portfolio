@@ -1,102 +1,99 @@
 import React from 'react';
 import { profileData } from '../data/profileData';
 import { projectsData } from '../data/projectsData';
-import { ShieldCheck, Download, ChevronRight, FileSpreadsheet, ExternalLink } from 'lucide-react';
+import { ShieldCheck, Download, ChevronRight, FileSpreadsheet, ArrowUpRight } from 'lucide-react';
 
 export const HeroSection = ({ onSelectProject }) => {
   return (
-    <section className="hero-section" id="hero">
-      <div className="hero-container">
-        <div className="hero-badge-wrap">
-          <ShieldCheck size={14} className="text-gold" />
-          <span>Institutional Financial Modeling • M&A / LBO / DCF</span>
+    <section className="apple-hero-section" id="hero">
+      <div className="apple-glow-backdrop"></div>
+      <div className="apple-container">
+        <div className="apple-eyebrow-badge">
+          <span className="apple-eyebrow-dot"></span>
+          <span>INVESTMENT BANKING &amp; PRIVATE EQUITY PORTFOLIO</span>
         </div>
 
-        <div className="hero-grid">
-          <div className="hero-left-col">
-            <h1 className="hero-title">
-              Investment Banking &amp; Private Equity <span className="gold">Portfolio</span>
+        <div className="apple-hero-grid">
+          <div className="apple-hero-left">
+            <h1 className="apple-hero-headline">
+              Financial Underwriting. <br />
+              <span className="apple-gradient-text">Engineered with Precision.</span>
             </h1>
-            <p className="hero-subtitle">
-              Comprehensive valuation and transaction modeling spanning mega-cap take-privates, multi-tranche debt waterfalls, 3-statement operating schedules, and intrinsic DCF underwriting. Built to Tier-1 investment bank and private equity standards.
+
+            <p className="apple-hero-lead">
+              Institutional-grade valuation and transaction models spanning mega-cap sponsor buyouts, multi-tranche debt waterfalls, 3-statement operating schedules, and intrinsic DCF underwriting. Built to Tier-1 investment bank and private equity standards.
             </p>
 
-            <div className="hero-cta-group">
-              <a href="#models" className="btn btn-primary" id="hero-cta-explore">
-                <span>Explore Deal Ledger (6)</span>
-                <ChevronRight size={16} />
+            <div className="apple-hero-actions">
+              <a href="#models" className="apple-btn-primary" id="hero-cta-explore">
+                <span>View Models Ledger (6)</span>
+                <ChevronRight size={15} />
               </a>
               <a
                 href={profileData.resumePdfUrl}
                 download="Angshurpita_Ganguly_Finance_CV.pdf"
-                className="btn btn-secondary"
+                className="apple-btn-secondary"
                 id="hero-cta-resume"
               >
-                <Download size={16} />
+                <Download size={15} />
                 <span>Download Finance CV (.pdf)</span>
               </a>
               <a
                 href="https://docs.google.com/spreadsheets/d/1fl-OSp1XZDXeAeFNc_qnds4Q_FlYob96/edit?usp=share_link"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-emerald"
+                className="apple-btn-tertiary"
                 id="hero-cta-sheet-verify"
               >
-                <FileSpreadsheet size={16} />
-                <span>Verify Live Google Sheets ↗</span>
+                <FileSpreadsheet size={15} />
+                <span>Verify Google Sheets</span>
+                <ArrowUpRight size={13} />
               </a>
             </div>
 
-            <div className="hero-stats-row">
+            {/* Apple 3D Frosted Glass Metric Strip */}
+            <div className="apple-stats-glass-grid">
               {profileData.stats.map((s, idx) => (
-                <div key={idx} className="hero-stat-card">
-                  <span className={`stat-value ${idx === 0 || idx === 1 ? 'gold' : idx === 2 ? 'emerald' : ''}`}>
-                    {s.value}
-                  </span>
-                  <span className="stat-label">{s.label}</span>
+                <div key={idx} className="apple-stat-card">
+                  <span className="apple-stat-num">{s.value}</span>
+                  <span className="apple-stat-label">{s.label}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="hero-right-col">
-            <div className="hero-terminal-card" id="hero-models-terminal">
-              <div className="terminal-header">
-                <div className="terminal-title">
-                  <span className="pulse-dot"></span>
-                  <span>UNDERWRITTEN TRANSACTIONS • VERIFIED LEDGER</span>
+          <div className="apple-hero-right">
+            {/* 3D Liquid Glass Deal Ledger Showcase */}
+            <div className="apple-glass-window" id="hero-models-terminal">
+              <div className="apple-window-header">
+                <div className="apple-window-controls">
+                  <span className="apple-dot red"></span>
+                  <span className="apple-dot yellow"></span>
+                  <span className="apple-dot green"></span>
                 </div>
-                <div className="terminal-leds">
-                  <div className="led green"></div>
-                  <div className="led amber"></div>
-                  <div className="led green"></div>
-                </div>
+                <div className="apple-window-title">UNDERWRITTEN DEALS • VERIFIED DIRECTORY</div>
+                <div className="apple-badge-live">PASS 100%</div>
               </div>
 
-              <div className="terminal-deal-list">
+              <div className="apple-window-body">
                 {projectsData.map((project) => (
                   <div
                     key={project.id}
-                    className="terminal-deal-item"
+                    className="apple-deal-row"
                     id={`hero-deal-item-${project.projectNumber}`}
                     onClick={() => onSelectProject(project)}
                   >
-                    <div className="terminal-deal-info">
-                      <span className="terminal-deal-ticker">
-                        {project.ticker} • {project.company}
-                      </span>
-                      <span className="terminal-deal-desc">{project.subtitle}</span>
+                    <div className="apple-deal-cell-main">
+                      <div className="apple-deal-title-line">
+                        <span className="apple-deal-ticker">{project.ticker}</span>
+                        <span className="apple-deal-name">{project.company}</span>
+                      </div>
+                      <div className="apple-deal-subtitle">{project.subtitle}</div>
                     </div>
-                    <div
-                      className={`terminal-deal-badge ${
-                        project.category.includes('LBO')
-                          ? 'gold'
-                          : project.category.includes('DCF')
-                          ? 'blue'
-                          : 'emerald'
-                      }`}
-                    >
-                      {project.summaryMetrics.badge || project.summaryMetrics.headline}
+                    <div className="apple-deal-cell-badge">
+                      <span className="apple-metric-pill">
+                        {project.summaryMetrics.badge || project.summaryMetrics.headline}
+                      </span>
                     </div>
                   </div>
                 ))}

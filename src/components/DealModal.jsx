@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, ExternalLink, Download, ShieldCheck, CheckCircle2, AlertTriangle, FileSpreadsheet, Layers, BarChart2, Table } from 'lucide-react';
+import { X, ExternalLink, Download, ArrowUpRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
 
 export const DealModal = ({ project, onClose }) => {
   const [activeTab, setActiveTab] = useState('memo');
@@ -7,72 +7,74 @@ export const DealModal = ({ project, onClose }) => {
   if (!project) return null;
 
   return (
-    <div className="modal-overlay" id="deal-modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        {/* Modal Sticky Header */}
-        <div className="modal-header">
-          <div className="modal-title-area">
-            <div className="modal-badge-row">
-              <span className="deal-number-badge">PROJECT {project.projectNumber}</span>
-              <span className="deal-category-badge lbo">{project.category}</span>
-              <span className="status-badge pass">
+    <div className="apple-modal-overlay" id="deal-modal-overlay" onClick={onClose}>
+      <div className="apple-modal-card" onClick={(e) => e.stopPropagation()}>
+        {/* Sticky Header */}
+        <div className="apple-modal-header">
+          <div className="apple-modal-title-col">
+            <div className="apple-modal-eyebrow-row">
+              <span className="apple-card-num-tag">PROJECT #{project.projectNumber}</span>
+              <span className="apple-card-category-tag">{project.category}</span>
+              <div className="apple-status-pass">
                 <CheckCircle2 size={12} />
                 <span>INTEGRITY PASS</span>
-              </span>
+              </div>
             </div>
-            <h2 className="modal-title">{project.title}</h2>
-            <p className="modal-subtitle">
-              {project.ticker} • {project.sector} • As of {project.valuationDate}
-            </p>
+            <h2 className="apple-modal-title">{project.title}</h2>
+            <div className="apple-modal-meta">
+              {project.ticker} • {project.sector} • Valuation Date: {project.valuationDate}
+            </div>
           </div>
-          <button className="modal-close-btn" onClick={onClose} id="modal-close-button">
-            <X size={18} />
+
+          <button className="apple-modal-close" onClick={onClose} id="modal-close-button">
+            <X size={16} />
           </button>
         </div>
 
-        {/* Verification Banner with Direct Links */}
-        <div className="modal-verification-banner">
-          <div className="verification-text">
-            <ShieldCheck size={18} className="text-emerald" />
+        {/* Verification Action Bar */}
+        <div className="apple-modal-verify-bar">
+          <div className="apple-verify-note">
+            <ShieldCheck size={16} className="accent-green" />
             <span>
-              <strong>Verified Master Model:</strong> Fully formulaic spreadsheet underwritten by Angshurpita Ganguly.
+              <strong>Verified Master Model:</strong> Audited formulaic spreadsheet prepared by Angshurpita Ganguly.
             </span>
           </div>
-          <div className="verification-actions">
+
+          <div className="apple-verify-buttons">
             <a
               href={project.sheetUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-emerald btn-sm"
+              className="apple-btn-secondary apple-btn-sm"
               id="modal-verify-sheet-btn"
             >
-              <ExternalLink size={14} />
-              <span>Open in Google Sheets ↗</span>
+              <span>Open in Google Sheets</span>
+              <ArrowUpRight size={13} />
             </a>
             <a
               href={project.downloadUrl}
               download
-              className="btn btn-secondary btn-sm"
+              className="apple-btn-primary apple-btn-sm"
               id="modal-download-xlsx-btn"
             >
-              <Download size={14} />
+              <Download size={13} />
               <span>Download Excel (.xlsx)</span>
             </a>
           </div>
         </div>
 
-        {/* Modal Navigation Tabs */}
-        <div className="modal-nav-tabs">
+        {/* Tab Switcher */}
+        <div className="apple-modal-tabs">
           <button
-            className={`modal-tab-btn ${activeTab === 'memo' ? 'active' : ''}`}
+            className={`apple-modal-tab-pill ${activeTab === 'memo' ? 'active' : ''}`}
             onClick={() => setActiveTab('memo')}
             id="modal-tab-memo"
           >
-            Executive Underwriting Memo
+            Executive Memo
           </button>
           {project.financialTable && (
             <button
-              className={`modal-tab-btn ${activeTab === 'financials' ? 'active' : ''}`}
+              className={`apple-modal-tab-pill ${activeTab === 'financials' ? 'active' : ''}`}
               onClick={() => setActiveTab('financials')}
               id="modal-tab-financials"
             >
@@ -81,16 +83,16 @@ export const DealModal = ({ project, onClose }) => {
           )}
           {(project.sourcesAndUses || project.valuationBridge || project.debtStructure || project.peerTable) && (
             <button
-              className={`modal-tab-btn ${activeTab === 'structure' ? 'active' : ''}`}
+              className={`apple-modal-tab-pill ${activeTab === 'structure' ? 'active' : ''}`}
               onClick={() => setActiveTab('structure')}
               id="modal-tab-structure"
             >
-              {project.sourcesAndUses ? 'Sources & Uses / Capital Structure' : 'Valuation Methodology & Bridge'}
+              {project.sourcesAndUses ? 'Sources & Uses / Capital Structure' : 'Valuation Methodology'}
             </button>
           )}
           {project.sensitivityGrid && (
             <button
-              className={`modal-tab-btn ${activeTab === 'sensitivity' ? 'active' : ''}`}
+              className={`apple-modal-tab-pill ${activeTab === 'sensitivity' ? 'active' : ''}`}
               onClick={() => setActiveTab('sensitivity')}
               id="modal-tab-sensitivity"
             >
@@ -98,50 +100,44 @@ export const DealModal = ({ project, onClose }) => {
             </button>
           )}
           <button
-            className={`modal-tab-btn ${activeTab === 'audit' ? 'active' : ''}`}
+            className={`apple-modal-tab-pill ${activeTab === 'audit' ? 'active' : ''}`}
             onClick={() => setActiveTab('audit')}
             id="modal-tab-audit"
           >
-            Model Integrity &amp; Checks (PASS)
+            Integrity Checks (PASS)
           </button>
         </div>
 
-        {/* Modal Body Content */}
-        <div className="modal-body">
+        {/* Modal Body */}
+        <div className="apple-modal-body">
           {/* TAB 1: EXECUTIVE MEMO */}
           {activeTab === 'memo' && (
             <div>
-              <div style={{ marginBottom: '24px' }}>
-                <h4 style={{ color: 'var(--gold-light)', fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>
-                  CORE INVESTMENT THESIS &amp; UNDERWRITING FRAMEWORK
-                </h4>
-                <p style={{ fontSize: '0.96rem', color: '#E2E8F0', lineHeight: '1.7' }}>
-                  {project.thesis}
-                </p>
+              <div className="apple-memo-block">
+                <div className="apple-memo-heading">UNDERWRITING THESIS &amp; FRAMEWORK</div>
+                <p className="apple-memo-lead">{project.thesis}</p>
               </div>
 
-              <div style={{ marginBottom: '28px' }}>
-                <h4 style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>
-                  SENIOR REVIEW MEMORANDUM &amp; KEY DIAGNOSTICS
-                </h4>
-                <div className="memo-list">
-                  {project.executiveSummary.map((point, idx) => (
-                    <div key={idx} className="memo-item">
-                      <span className="memo-bullet">◆</span>
-                      <span>{point}</span>
+              <div className="apple-memo-block">
+                <div className="apple-memo-heading">SENIOR REVIEW MEMORANDUM &amp; INSIGHTS</div>
+                <div className="apple-memo-list">
+                  {project.executiveSummary.map((item, idx) => (
+                    <div key={idx} className="apple-memo-item">
+                      <span className="apple-memo-bullet">▪</span>
+                      <span>{item}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Summary Stats Grid */}
-              <div className="card-metrics-strip" style={{ gridTemplateColumns: 'repeat(4, 1fr)', padding: '18px' }}>
+              {/* Key Metrics Quick Panel */}
+              <div className="apple-memo-metrics-grid">
                 {Object.entries(project.summaryMetrics).map(([key, val], idx) => {
                   if (key === 'tone' || key === 'badge') return null;
                   return (
-                    <div key={idx} className="strip-item">
-                      <span className="strip-label">{key.replace(/([A-Z])/g, ' $1')}</span>
-                      <span className="strip-val gold">{val}</span>
+                    <div key={idx} className="apple-memo-metric-item">
+                      <span className="apple-memo-metric-label">{key.replace(/([A-Z])/g, ' $1')}</span>
+                      <span className="apple-memo-metric-val">{val}</span>
                     </div>
                   );
                 })}
@@ -152,18 +148,13 @@ export const DealModal = ({ project, onClose }) => {
           {/* TAB 2: FINANCIAL PROJECTIONS */}
           {activeTab === 'financials' && project.financialTable && (
             <div>
-              <h4 style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>
-                INTEGRATED MULTI-YEAR PROJECTIONS SCHEDULE
-              </h4>
-              <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)', marginBottom: '16px' }}>
-                All figures dynamically linked to scenario manager.
-              </p>
-              <div className="fin-table-container">
-                <table className="fin-table">
+              <div className="apple-memo-heading">MULTI-YEAR FORECAST SCHEDULE</div>
+              <div className="apple-table-glass-wrap" style={{ marginTop: '12px' }}>
+                <table className="apple-league-table">
                   <thead>
                     <tr>
                       {project.financialTable.headers.map((h, idx) => (
-                        <th key={idx}>{h}</th>
+                        <th key={idx} style={idx > 0 ? { textAlign: 'right' } : {}}>{h}</th>
                       ))}
                     </tr>
                   </thead>
@@ -171,7 +162,7 @@ export const DealModal = ({ project, onClose }) => {
                     {project.financialTable.rows.map((row, rIdx) => (
                       <tr key={rIdx}>
                         {row.map((cell, cIdx) => (
-                          <td key={cIdx} className={cIdx > 0 ? 'num' : ''}>
+                          <td key={cIdx} className={cIdx > 0 ? 'num' : ''} style={cIdx > 0 ? { textAlign: 'right' } : {}}>
                             {cell}
                           </td>
                         ))}
@@ -183,40 +174,37 @@ export const DealModal = ({ project, onClose }) => {
             </div>
           )}
 
-          {/* TAB 3: SOURCES & USES / VALUATION STRUCTURE */}
+          {/* TAB 3: CAPITAL STRUCTURE / VALUATION */}
           {activeTab === 'structure' && (
             <div>
-              {/* If Sources & Uses is present */}
               {project.sourcesAndUses && (
                 <div>
-                  <h4 style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '16px' }}>
-                    TRANSACTION CAPITALIZATION &amp; FUNDING WATERFALL
-                  </h4>
-                  <div className="su-grid">
-                    <div className="su-panel">
-                      <div className="su-title">SOURCES OF FUNDS ($M)</div>
-                      <table className="fin-table">
+                  <div className="apple-memo-heading">TRANSACTION SOURCES &amp; USES ($M)</div>
+                  <div className="apple-su-grid" style={{ marginTop: '12px' }}>
+                    <div className="apple-su-card">
+                      <div className="apple-su-title">SOURCES OF FUNDS</div>
+                      <table className="apple-league-table">
                         <tbody>
                           {project.sourcesAndUses.sources.map((s, idx) => (
-                            <tr key={idx} style={s.isTotal ? { fontWeight: '700', borderTop: '2px solid var(--border-light)' } : s.highlight ? { color: 'var(--gold-light)' } : {}}>
+                            <tr key={idx} style={s.isTotal ? { fontWeight: '700', borderTop: '1px solid rgba(255,255,255,0.2)' } : s.highlight ? { color: '#2997FF' } : {}}>
                               <td>{s.item}</td>
-                              <td className="num">{s.amount}</td>
-                              <td className="num" style={{ color: 'var(--text-muted)' }}>{s.pct}</td>
+                              <td className="num" style={{ textAlign: 'right' }}>{s.amount}</td>
+                              <td className="num" style={{ textAlign: 'right', color: '#86868B' }}>{s.pct}</td>
                             </tr>
                           ))}
                         </tbody>
                       </table>
                     </div>
 
-                    <div className="su-panel">
-                      <div className="su-title">USES OF FUNDS ($M)</div>
-                      <table className="fin-table">
+                    <div className="apple-su-card">
+                      <div className="apple-su-title">USES OF FUNDS</div>
+                      <table className="apple-league-table">
                         <tbody>
                           {project.sourcesAndUses.uses.map((u, idx) => (
-                            <tr key={idx} style={u.isTotal ? { fontWeight: '700', borderTop: '2px solid var(--border-light)' } : {}}>
+                            <tr key={idx} style={u.isTotal ? { fontWeight: '700', borderTop: '1px solid rgba(255,255,255,0.2)' } : {}}>
                               <td>{u.item}</td>
-                              <td className="num">{u.amount}</td>
-                              <td className="num" style={{ color: 'var(--text-muted)' }}>{u.pct}</td>
+                              <td className="num" style={{ textAlign: 'right' }}>{u.amount}</td>
+                              <td className="num" style={{ textAlign: 'right', color: '#86868B' }}>{u.pct}</td>
                             </tr>
                           ))}
                         </tbody>
@@ -226,19 +214,16 @@ export const DealModal = ({ project, onClose }) => {
                 </div>
               )}
 
-              {/* If Returns Bridge is present */}
               {project.returnsBridge && (
                 <div style={{ marginTop: '28px' }}>
-                  <h4 style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>
-                    SPONSOR RETURNS &amp; EXIT WATERFALL
-                  </h4>
-                  <div className="fin-table-container">
-                    <table className="fin-table">
+                  <div className="apple-memo-heading">SPONSOR RETURNS WATERFALL</div>
+                  <div className="apple-table-glass-wrap" style={{ marginTop: '12px' }}>
+                    <table className="apple-league-table">
                       <tbody>
                         {project.returnsBridge.map((item, idx) => (
-                          <tr key={idx} style={item.highlight ? { background: 'rgba(212, 175, 55, 0.1)', fontWeight: '700', color: 'var(--gold-light)' } : {}}>
+                          <tr key={idx} style={item.highlight ? { background: 'rgba(41, 151, 255, 0.1)', fontWeight: '700', color: '#2997FF' } : {}}>
                             <td>{item.step}</td>
-                            <td className="num">{item.value}</td>
+                            <td className="num" style={{ textAlign: 'right' }}>{item.value}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -247,20 +232,17 @@ export const DealModal = ({ project, onClose }) => {
                 </div>
               )}
 
-              {/* If Valuation Bridge is present */}
               {project.valuationBridge && (
                 <div>
-                  <h4 style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>
-                    ENTERPRISE VALUE TO EQUITY VALUE BRIDGE
-                  </h4>
-                  <div className="fin-table-container">
-                    <table className="fin-table">
+                  <div className="apple-memo-heading">ENTERPRISE VALUE TO EQUITY VALUE BRIDGE</div>
+                  <div className="apple-table-glass-wrap" style={{ marginTop: '12px' }}>
+                    <table className="apple-league-table">
                       <tbody>
                         {project.valuationBridge.map((item, idx) => (
-                          <tr key={idx} style={item.highlight ? { background: 'rgba(212, 175, 55, 0.15)', fontWeight: '700', color: 'var(--gold-light)' } : {}}>
+                          <tr key={idx} style={item.highlight ? { background: 'rgba(41, 151, 255, 0.1)', fontWeight: '700', color: '#2997FF' } : {}}>
                             <td>{item.step}</td>
-                            <td className="num">{item.value}</td>
-                            {item.pct && <td className="num" style={{ color: 'var(--text-muted)' }}>{item.pct}</td>}
+                            <td className="num" style={{ textAlign: 'right' }}>{item.value}</td>
+                            {item.pct && <td className="num" style={{ textAlign: 'right', color: '#86868B' }}>{item.pct}</td>}
                           </tr>
                         ))}
                       </tbody>
@@ -269,18 +251,15 @@ export const DealModal = ({ project, onClose }) => {
                 </div>
               )}
 
-              {/* If Debt Schedule is present */}
               {project.debtSchedule && (
                 <div style={{ marginTop: '28px' }}>
-                  <h4 style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>
-                    DEBT AMORTIZATION SCHEDULE &amp; CASH SWEEP PAYDOWN
-                  </h4>
-                  <div className="fin-table-container">
-                    <table className="fin-table">
+                  <div className="apple-memo-heading">DEBT AMORTIZATION &amp; CASH SWEEP SCHEDULE</div>
+                  <div className="apple-table-glass-wrap" style={{ marginTop: '12px' }}>
+                    <table className="apple-league-table">
                       <thead>
                         <tr>
                           {project.debtSchedule.headers.map((h, idx) => (
-                            <th key={idx}>{h}</th>
+                            <th key={idx} style={idx > 0 ? { textAlign: 'right' } : {}}>{h}</th>
                           ))}
                         </tr>
                       </thead>
@@ -288,7 +267,7 @@ export const DealModal = ({ project, onClose }) => {
                         {project.debtSchedule.rows.map((row, rIdx) => (
                           <tr key={rIdx}>
                             {row.map((cell, cIdx) => (
-                              <td key={cIdx} className={cIdx > 0 ? 'num' : ''}>
+                              <td key={cIdx} className={cIdx > 0 ? 'num' : ''} style={cIdx > 0 ? { textAlign: 'right' } : {}}>
                                 {cell}
                               </td>
                             ))}
@@ -300,26 +279,23 @@ export const DealModal = ({ project, onClose }) => {
                 </div>
               )}
 
-              {/* If Peer Comps Table is present */}
               {project.peerTable && (
                 <div>
-                  <h4 style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>
-                    PUBLIC COMPARABLE COMPANIES BENCHMARK MATRIX
-                  </h4>
-                  <div className="fin-table-container">
-                    <table className="fin-table">
+                  <div className="apple-memo-heading">PEER TRADING COMPARABLES MATRIX</div>
+                  <div className="apple-table-glass-wrap" style={{ marginTop: '12px' }}>
+                    <table className="apple-league-table">
                       <thead>
                         <tr>
                           {project.peerTable.headers.map((h, idx) => (
-                            <th key={idx}>{h}</th>
+                            <th key={idx} style={idx > 1 ? { textAlign: 'right' } : {}}>{h}</th>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
                         {project.peerTable.rows.map((row, rIdx) => (
-                          <tr key={rIdx} style={rIdx === 0 ? { background: 'rgba(212, 175, 55, 0.08)', fontWeight: '600' } : {}}>
+                          <tr key={rIdx} style={rIdx === 0 ? { background: 'rgba(41, 151, 255, 0.08)', fontWeight: '600' } : {}}>
                             {row.map((cell, cIdx) => (
-                              <td key={cIdx} className={cIdx > 1 ? 'num' : ''}>
+                              <td key={cIdx} className={cIdx > 1 ? 'num' : ''} style={cIdx > 1 ? { textAlign: 'right' } : {}}>
                                 {cell}
                               </td>
                             ))}
@@ -336,36 +312,38 @@ export const DealModal = ({ project, onClose }) => {
           {/* TAB 4: SENSITIVITY MATRIX */}
           {activeTab === 'sensitivity' && project.sensitivityGrid && (
             <div>
-              <h4 style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '6px' }}>
-                {project.sensitivityGrid.title}
-              </h4>
-              <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '18px' }}>
-                Columns: {project.sensitivityGrid.colHeader} | Rows: {project.sensitivityGrid.rowHeader}
+              <div className="apple-memo-heading">{project.sensitivityGrid.title}</div>
+              <p style={{ fontSize: '0.82rem', color: '#86868B', marginBottom: '14px' }}>
+                X-Axis: {project.sensitivityGrid.colHeader} • Y-Axis: {project.sensitivityGrid.rowHeader}
               </p>
 
-              <div className="fin-table-container">
-                <table className="heatmap-table">
+              <div className="apple-table-glass-wrap">
+                <table className="apple-league-table" style={{ textAlign: 'center' }}>
                   <thead>
                     <tr>
-                      <th style={{ background: 'var(--bg-secondary)' }}>
+                      <th style={{ textAlign: 'left' }}>
                         {project.sensitivityGrid.rowHeader} \ {project.sensitivityGrid.colHeader}
                       </th>
                       {project.sensitivityGrid.cols.map((col, idx) => (
-                        <th key={idx}>{col}</th>
+                        <th key={idx} style={{ textAlign: 'center' }}>{col}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
                     {project.sensitivityGrid.rows.map((row, rIdx) => (
                       <tr key={rIdx}>
-                        <td style={{ fontWeight: '700', background: 'var(--bg-tertiary)', textAlign: 'left' }}>
+                        <td style={{ fontWeight: '600', textAlign: 'left', color: '#F5F5F7' }}>
                           {row.label}
                         </td>
                         {row.values.map((val, cIdx) => {
-                          const isBase = row.isBase && cIdx === 2; // Midpoint base case
+                          const isBase = row.isBase && cIdx === 2;
                           return (
-                            <td key={cIdx} className={`heatmap-cell ${isBase ? 'base-case' : ''}`}>
-                              {val} {isBase && <span style={{ fontSize: '0.68rem', display: 'block', color: 'var(--gold-light)' }}>(Base)</span>}
+                            <td
+                              key={cIdx}
+                              className="num"
+                              style={isBase ? { background: 'rgba(41, 151, 255, 0.2)', color: '#2997FF', fontWeight: '700', borderRadius: '4px' } : {}}
+                            >
+                              {val} {isBase && <span style={{ fontSize: '0.68rem', display: 'block', color: '#86868B' }}>(Base)</span>}
                             </td>
                           );
                         })}
@@ -376,8 +354,8 @@ export const DealModal = ({ project, onClose }) => {
               </div>
 
               {project.sensitivityGrid.note && (
-                <div style={{ marginTop: '16px', padding: '12px', background: 'rgba(255, 255, 255, 0.02)', borderLeft: '3px solid var(--gold-primary)', fontSize: '0.82rem', color: '#94A3B8' }}>
-                  <strong>Sensitivity Insight:</strong> {project.sensitivityGrid.note}
+                <div className="apple-callout-box" style={{ marginTop: '16px' }}>
+                  <strong>Diagnostic Note:</strong> {project.sensitivityGrid.note}
                 </div>
               )}
             </div>
@@ -386,25 +364,23 @@ export const DealModal = ({ project, onClose }) => {
           {/* TAB 5: INTEGRITY CHECKS & SOURCES */}
           {activeTab === 'audit' && (
             <div>
-              <h4 style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>
-                MODEL AUDIT INTEGRITY &amp; DISCLOSURE RECONCILIATION
-              </h4>
-              <div className="fin-table-container">
-                <table className="fin-table">
+              <div className="apple-memo-heading">AUDITED FINANCIAL MODEL CHECKS</div>
+              <div className="apple-table-glass-wrap" style={{ marginTop: '12px' }}>
+                <table className="apple-league-table">
                   <thead>
                     <tr>
-                      <th>Integrity Check Description</th>
-                      <th>Tolerance / Threshold</th>
-                      <th>Audit Result Status</th>
+                      <th>Check Description</th>
+                      <th style={{ textAlign: 'right' }}>Threshold / Tolerance</th>
+                      <th style={{ textAlign: 'right' }}>Audit Status</th>
                     </tr>
                   </thead>
                   <tbody>
                     {project.auditChecks.map((item, idx) => (
                       <tr key={idx}>
                         <td>{item.check}</td>
-                        <td className="num">{item.result}</td>
-                        <td>
-                          <span className="status-badge pass">
+                        <td className="num" style={{ textAlign: 'right' }}>{item.result}</td>
+                        <td style={{ textAlign: 'right' }}>
+                          <span className="apple-status-pass">
                             <CheckCircle2 size={12} />
                             <span>{item.status}</span>
                           </span>
@@ -415,13 +391,8 @@ export const DealModal = ({ project, onClose }) => {
                 </table>
               </div>
 
-              <div style={{ marginTop: '24px', padding: '16px', background: 'rgba(255, 255, 255, 0.02)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-sm)' }}>
-                <h5 style={{ color: '#E2E8F0', fontSize: '0.86rem', marginBottom: '8px' }}>
-                  Auditing Standard &amp; Verification Procedures:
-                </h5>
-                <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
-                  This financial model strictly enforces double-entry balance sheet equilibrium, zero formulaic hardcoding in downstream schedules, and dynamic scenario selectors. Every historical data point is referenced directly from SEC Form 10-K filings, annual investor presentations, and audited financial statements.
-                </p>
+              <div className="apple-callout-box" style={{ marginTop: '20px' }}>
+                <strong>Institutional Underwriting Standard:</strong> Every balance sheet, cash sweep schedule, and valuation bridge in this project ties out mathematically to 0.00 delta across all projection periods. Baseline historical figures are transcribed without bias from audited SEC Form 10-K and annual report disclosures.
               </div>
             </div>
           )}

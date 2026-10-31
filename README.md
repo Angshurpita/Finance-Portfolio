@@ -1,6 +1,6 @@
 # Angshurpita Ganguly — Investment Banking & Private Equity Portfolio
 
-An institutional-grade web portfolio engineered for Investment Banking, Private Equity, and M&A / Valuation Analyst recruitment. Designed with a prestigious Wall Street aesthetic (deep obsidian, Bloomberg tabular typography, live market benchmark tickers, and dynamic transaction inspection).
+An institutional-grade portfolio dashboard engineered for Investment Banking, Private Equity, and M&A / Valuation Analyst recruitment. Designed with **Apple.com's signature liquid glass 3D design language** and Wall Street typography (Space Black, frosted glass specular highlights, SF Pro / Inter typography, and tabular figures).
 
 ---
 
@@ -17,26 +17,32 @@ An institutional-grade web portfolio engineered for Investment Banking, Private 
 
 ---
 
-## ⚡ Key Platform Capabilities
+## 💎 Design & Technical Highlights
 
-1. **Live Bloomberg Benchmark Ticker**: Real-time pulsing market rates across INFY, AES, TRENT, PIDILITIND, US 10Y Yield, India 10Y G-Sec, SOFR, and Brent Crude.
-2. **Interactive Valuation & LBO Sandbox**:
-   - **AES Corp Buyout Simulator**: Real-time adjustment of purchase offer price ($13-$17) and exit multiple (11.5x-14.5x) to recalculate MOIC, Gross IRR, Sponsor Equity Cheque, and Dollar Gain dynamically.
-   - **Infosys DCF Simulator**: Real-time adjustment of WACC (10%-12.5%) and Perpetual Growth (3.5%-5.5%) to recalculate intrinsic share price and market discount/premium.
-3. **Comprehensive Deal Memorandum Modals**:
-   - Institutional underwriting thesis & senior review diagnostics.
-   - Multi-year integrated financial projection tables.
-   - Sources & Uses funding waterfall, debt amortization schedules, and WACC derivations.
-   - 2D Sensitivity heatmaps with underwritten base case highlights.
-   - 100% PASS audit check reconciliations (Tolerance 0.50, Sources=Uses delta 0.00, Balance Sheet tie-out 0.00).
-4. **Dual Layout Modes**: Switch between high-impact Tombstone Deal Cards and Bloomberg League Table view.
-5. **Candidate Profile & Direct CV Download**: Direct access to Angshurpita's Finance CV (`Angshurpita_Ganguly_Finance_CV.pdf`).
+1. **Apple Liquid Glass & 3D Aesthetic**:
+   - Translucent glassmorphism with heavy blur (`backdrop-filter: blur(32px)`), hairline specular borders (`inset 0 1px 1px rgba(255, 255, 255, 0.18)`), and subtle ambient gradient illumination.
+   - Refined typography: Apple SF Pro Display / SF Pro Text / Inter system fonts with tight tracking (`-0.025em`) and tabular numerals (`SF Mono` / `JetBrains Mono`).
+   - Investment banking standard color palette: Space Black `#000000`, Titanium Pearl `#F5F5F7`, Apple Blue `#2997FF`, Alpine Green `#30D158`, and Coral `#FF453A`.
+
+2. **Full Deal Memorandum & Model Inspector**:
+   - Institutional Underwriting Thesis & Senior Review Diagnostics.
+   - Multi-Year Integrated Financial Projections Table.
+   - Sources & Uses / Capital Structure / Valuation Bridge.
+   - 2D Sensitivity Heatmap with underwritten base case highlights.
+   - Audited Model Integrity Check (100% PASS across Sources=Uses, balance sheet tie-outs, and SEC Form 10-K reconciliations).
+
+3. **Dual View Layout**:
+   - Switch between **3D Liquid Glass Deal Cards** and a clean **Bloomberg League Table**.
+
+4. **Candidate Background & Resume Integration**:
+   - Direct download for [`Angshurpita_Ganguly_Finance_CV.pdf`](public/downloads/Angshurpita_Ganguly_Finance_CV.pdf).
+   - Highlighting GCECT Kolkata B.Tech IT (**9.72 / 10.00 CGPA**), J.P. Morgan Investment Banking Simulation, and CFA Level 1 Candidate.
 
 ---
 
 ## 🚀 Instant Deployment to Vercel
 
-The application is pre-configured for **zero-configuration deployment on Vercel** with `vercel.json` included.
+Configured for **zero-configuration deployment on Vercel** with `vercel.json` included.
 
 ### Option A: Via GitHub (Recommended)
 1. Push this repository to your GitHub account:
@@ -45,31 +51,23 @@ The application is pre-configured for **zero-configuration deployment on Vercel*
    git branch -M main
    git push -u origin main
    ```
-2. Log into [vercel.com](https://vercel.com).
-3. Click **Add New... -> Project** and import the `finance-portfolio` repository.
-4. Framework Preset will automatically detect **Vite**.
-5. Click **Deploy**. Your portfolio will be live on `https://<project-name>.vercel.app` in under 30 seconds!
+2. Log into [vercel.com](https://vercel.com) and click **Add New... -> Project**.
+3. Import the `finance-portfolio` repository.
+4. Framework Preset will automatically detect **Vite** (`npm run build`, output: `dist`).
+5. Click **Deploy**.
 
 ### Option B: Via Vercel CLI
 ```bash
-# Install Vercel CLI if needed
 npm i -g vercel
-
-# Deploy directly from your terminal
 vercel
 ```
 
 ---
 
-## 🛠️ Local Development & Testing
+## 🛠️ Local Development
 
 ```bash
-# Install dependencies
 npm install
-
-# Run local development server
 npm run dev
-
-# Build production bundle
 npm run build
 ```

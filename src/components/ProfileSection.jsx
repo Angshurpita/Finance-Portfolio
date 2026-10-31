@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { profileData } from '../data/profileData';
-import { GraduationCap, Award, Briefcase, Mail, Phone, MapPin, Download, Check, Copy } from 'lucide-react';
+import { GraduationCap, Award, Mail, Phone, MapPin, Download, Check, Copy, ArrowUpRight } from 'lucide-react';
 
 export const ProfileSection = () => {
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -12,41 +12,40 @@ export const ProfileSection = () => {
   };
 
   return (
-    <section className="profile-section" id="profile">
-      <div className="section-container">
-        <div className="profile-card-main">
-          <div className="profile-inner-grid">
-            {/* Left Column: Bio & Core Info */}
-            <div className="profile-bio-col">
-              <div className="section-tag">
+    <section className="apple-section" id="profile">
+      <div className="apple-container">
+        <div className="apple-profile-card">
+          <div className="apple-profile-grid">
+            {/* Bio Column */}
+            <div className="apple-profile-bio-col">
+              <div className="apple-section-eyebrow">
                 <GraduationCap size={14} />
-                <span>Candidate Background</span>
+                <span>CANDIDATE BACKGROUND</span>
               </div>
-              <h3>{profileData.name}</h3>
-              <p className="role-subtitle">{profileData.title}</p>
-              <p className="bio-text">{profileData.bio}</p>
+              <h3 className="apple-profile-name">{profileData.name}</h3>
+              <div className="apple-profile-role">{profileData.title}</div>
+              <p className="apple-profile-bio">{profileData.bio}</p>
 
-              {/* Contact Information & Action */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '24px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#94A3B8', fontSize: '0.86rem' }}>
-                  <MapPin size={15} color="var(--gold-primary)" />
+              <div className="apple-contact-list">
+                <div className="apple-contact-item">
+                  <MapPin size={15} className="accent-blue" />
                   <span>{profileData.location}</span>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#94A3B8', fontSize: '0.86rem' }}>
-                  <Phone size={15} color="var(--gold-primary)" />
+                <div className="apple-contact-item">
+                  <Phone size={15} className="accent-blue" />
                   <span>{profileData.phone}</span>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#94A3B8', fontSize: '0.86rem' }}>
-                  <Mail size={15} color="var(--gold-primary)" />
+                <div className="apple-contact-item">
+                  <Mail size={15} className="accent-blue" />
                   <span>{profileData.email}</span>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              <div className="apple-profile-actions">
                 <a
                   href={profileData.resumePdfUrl}
                   download="Angshurpita_Ganguly_Finance_CV.pdf"
-                  className="btn btn-primary"
+                  className="apple-btn-primary"
                   id="profile-download-cv-btn"
                 >
                   <Download size={15} />
@@ -54,49 +53,49 @@ export const ProfileSection = () => {
                 </a>
                 <button
                   onClick={handleCopyEmail}
-                  className="btn btn-secondary"
+                  className="apple-btn-secondary"
                   id="profile-copy-email-btn"
                 >
-                  {copiedEmail ? <Check size={15} className="text-emerald" /> : <Copy size={15} />}
-                  <span>{copiedEmail ? 'Email Copied!' : 'Copy Email Address'}</span>
+                  {copiedEmail ? <Check size={14} className="accent-green" /> : <Copy size={14} />}
+                  <span>{copiedEmail ? 'Email Copied' : 'Copy Email'}</span>
                 </button>
               </div>
             </div>
 
-            {/* Right Column: Education & Credentials */}
-            <div className="profile-cred-col">
-              <h4 style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '16px' }}>
-                ACADEMIC EXCELLENCE &amp; PROFESSIONAL PREPARATION
-              </h4>
+            {/* Credentials Column */}
+            <div className="apple-profile-cred-col">
+              <div className="apple-memo-heading" style={{ marginBottom: '14px' }}>
+                ACADEMIC EXCELLENCE &amp; PROFESSIONAL CREDENTIALS
+              </div>
 
               {/* Education Box */}
-              <div className="credential-item" style={{ borderLeft: '3px solid var(--gold-primary)', marginBottom: '16px' }}>
-                <div className="cred-icon-box">
+              <div className="apple-cred-card" style={{ borderLeft: '2px solid #2997FF', marginBottom: '14px' }}>
+                <div className="apple-cred-icon-wrap">
                   <GraduationCap size={20} />
                 </div>
-                <div>
-                  <div className="cred-title">{profileData.education.institution}</div>
-                  <div className="cred-issuer">{profileData.education.degree}</div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.88rem', fontWeight: '700', color: 'var(--emerald-light)', margin: '4px 0' }}>
+                <div className="apple-cred-content">
+                  <div className="apple-cred-title">{profileData.education.institution}</div>
+                  <div className="apple-cred-sub">{profileData.education.degree}</div>
+                  <div className="apple-cred-grade">
                     {profileData.education.grade}
                   </div>
-                  <div className="cred-desc">
+                  <div className="apple-cred-meta">
                     {profileData.education.period} • {profileData.education.location}
                   </div>
                 </div>
               </div>
 
               {/* Credentials List */}
-              <div className="credentials-list">
+              <div className="apple-cred-list">
                 {profileData.credentials.map((cred, idx) => (
-                  <div key={idx} className="credential-item">
-                    <div className="cred-icon-box">
+                  <div key={idx} className="apple-cred-card">
+                    <div className="apple-cred-icon-wrap">
                       <Award size={18} />
                     </div>
-                    <div>
-                      <div className="cred-title">{cred.title}</div>
-                      <div className="cred-issuer">{cred.issuer} • {cred.year}</div>
-                      <div className="cred-desc">{cred.desc}</div>
+                    <div className="apple-cred-content">
+                      <div className="apple-cred-title">{cred.title}</div>
+                      <div className="apple-cred-sub">{cred.issuer} • {cred.year}</div>
+                      <div className="apple-cred-desc">{cred.desc}</div>
                     </div>
                   </div>
                 ))}

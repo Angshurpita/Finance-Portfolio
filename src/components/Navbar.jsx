@@ -1,60 +1,55 @@
 import React from 'react';
 import { profileData } from '../data/profileData';
-import { FileText, ExternalLink, CheckCircle2 } from 'lucide-react';
+import { FileText, ExternalLink, CheckCircle } from 'lucide-react';
 
-export const Navbar = ({ onOpenResume, onScrollToSection }) => {
+export const Navbar = () => {
   return (
-    <header className="main-nav" id="main-navigation">
-      <div className="nav-container">
-        <a href="#hero" className="brand-crest" id="nav-brand-crest">
-          <div className="crest-icon">AG</div>
-          <div className="brand-info">
-            <span className="brand-name">{profileData.name}</span>
-            <span className="brand-role">Investment Banking & PE Candidate</span>
+    <header className="apple-nav" id="main-navigation">
+      <div className="apple-nav-container">
+        <a href="#hero" className="apple-brand-link" id="nav-brand-crest">
+          <div className="apple-monogram">AG</div>
+          <div className="apple-brand-text">
+            <span className="apple-candidate-name">{profileData.name}</span>
+            <span className="apple-candidate-division">Investment Banking &amp; Private Equity</span>
           </div>
         </a>
 
-        <nav>
-          <ul className="nav-links">
+        <nav className="apple-nav-menu">
+          <ul className="apple-nav-list">
             <li>
-              <a href="#models" className="nav-link" id="nav-link-models">
+              <a href="#models" className="apple-nav-item" id="nav-link-models">
                 Financial Models (6)
               </a>
             </li>
             <li>
-              <a href="#sandbox" className="nav-link" id="nav-link-sandbox">
-                Valuation Simulator
-              </a>
-            </li>
-            <li>
-              <a href="#methodology" className="nav-link" id="nav-link-methodology">
+              <a href="#methodology" className="apple-nav-item" id="nav-link-methodology">
                 Modeling Standards
               </a>
             </li>
             <li>
-              <a href="#profile" className="nav-link" id="nav-link-profile">
-                Candidate Profile
+              <a href="#profile" className="apple-nav-item" id="nav-link-profile">
+                Background &amp; Credentials
               </a>
             </li>
           </ul>
         </nav>
 
-        <div className="nav-actions">
+        <div className="apple-nav-actions">
           <a
             href={profileData.resumePdfUrl}
             download="Angshurpita_Ganguly_Finance_CV.pdf"
-            className="btn btn-secondary btn-sm"
+            className="apple-btn-secondary apple-btn-sm"
             id="nav-download-resume-btn"
           >
-            <FileText size={14} />
-            <span>Finance CV</span>
+            <FileText size={13} />
+            <span>Finance CV (.pdf)</span>
           </a>
           <a
             href="#models"
-            className="btn btn-primary btn-sm"
+            className="apple-btn-primary apple-btn-sm"
             id="nav-verify-spreadsheets-btn"
           >
-            <CheckCircle2 size={14} />
+            <CheckCircle size={13} />
             <span>Verify Models (6)</span>
           </a>
         </div>

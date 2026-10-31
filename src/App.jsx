@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { TickerBar } from './components/TickerBar';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
-import { ValuationSandbox } from './components/ValuationSandbox';
 import { ProjectsHub } from './components/ProjectsHub';
 import { MethodologySection } from './components/MethodologySection';
 import { ProfileSection } from './components/ProfileSection';
@@ -25,25 +23,19 @@ export function App() {
 
   return (
     <div className="portfolio-app-root">
-      {/* Bloomberg-style Live Market Benchmark Ticker */}
-      <TickerBar />
-
-      {/* Main Navigation */}
+      {/* Liquid Glass Apple-style Navigation */}
       <Navbar />
 
-      {/* Hero Section with Value Prop and Live Terminal Snapshot */}
+      {/* Hero Section with Institutional Apple Aesthetic */}
       <HeroSection onSelectProject={setSelectedProject} />
 
-      {/* Interactive Financial Sandbox / LBO Simulator */}
-      <ValuationSandbox />
-
-      {/* Main Financial Models Hub (6 Projects with Direct Google Sheet Links) */}
+      {/* Main Financial Models Hub (6 Underwritten Projects) */}
       <ProjectsHub onSelectProject={setSelectedProject} />
 
-      {/* Modeling Standards & Methodological Principles */}
+      {/* Financial Modeling Standards & Institutional Rigor */}
       <MethodologySection />
 
-      {/* Candidate Background, Education (9.72 CGPA), and Resume */}
+      {/* Candidate Background, Academic Excellence (9.72 CGPA), and CV */}
       <ProfileSection />
 
       {/* Institutional Compliance & Footnotes Footer */}

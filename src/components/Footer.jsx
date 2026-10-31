@@ -1,80 +1,79 @@
 import React from 'react';
 import { profileData } from '../data/profileData';
-import { ShieldCheck, ExternalLink, Download } from 'lucide-react';
+import { ShieldCheck, ArrowUpRight, Download } from 'lucide-react';
 
 export const Footer = () => {
   return (
-    <footer className="footer" id="footer">
-      <div className="footer-container">
-        <div className="footer-top">
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
-              <div className="crest-icon" style={{ width: '32px', height: '32px', fontSize: '0.9rem' }}>AG</div>
-              <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1.1rem', fontWeight: '700', color: '#FFF' }}>
-                {profileData.name}
-              </span>
+    <footer className="apple-footer" id="footer">
+      <div className="apple-container">
+        <div className="apple-footer-top">
+          <div className="apple-footer-brand-col">
+            <div className="apple-footer-monogram-row">
+              <div className="apple-monogram" style={{ width: '28px', height: '28px', fontSize: '0.82rem' }}>AG</div>
+              <span className="apple-footer-brand-name">{profileData.name}</span>
             </div>
-            <p style={{ fontSize: '0.84rem', color: '#94A3B8', maxWidth: '420px', lineHeight: '1.6' }}>
+            <p className="apple-footer-brand-desc">
               Targeting Investment Banking, Private Equity, and M&amp;A / Valuation Analyst opportunities. Prepared with institutional rigor, triple-statement tie-outs, and Wall Street modeling standards.
             </p>
           </div>
 
-          <div>
-            <h5 style={{ color: '#FFF', fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>
-              Quick Navigation
-            </h5>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.84rem' }}>
-              <li><a href="#models" style={{ color: '#94A3B8', textDecoration: 'none' }}>Underwritten Models (6)</a></li>
-              <li><a href="#sandbox" style={{ color: '#94A3B8', textDecoration: 'none' }}>LBO &amp; Valuation Simulator</a></li>
-              <li><a href="#methodology" style={{ color: '#94A3B8', textDecoration: 'none' }}>Modeling Methodology</a></li>
-              <li><a href="#profile" style={{ color: '#94A3B8', textDecoration: 'none' }}>Candidate Profile &amp; CV</a></li>
+          <div className="apple-footer-links-col">
+            <div className="apple-footer-heading">Navigation</div>
+            <ul className="apple-footer-list">
+              <li><a href="#models">Financial Models (6)</a></li>
+              <li><a href="#methodology">Modeling Standards</a></li>
+              <li><a href="#profile">Candidate Profile</a></li>
             </ul>
           </div>
 
-          <div>
-            <h5 style={{ color: '#FFF', fontSize: '0.82rem', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>
-              Direct Verification
-            </h5>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.84rem' }}>
-              <a
-                href="https://docs.google.com/spreadsheets/d/1fl-OSp1XZDXeAeFNc_qnds4Q_FlYob96/edit?usp=share_link"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: 'var(--emerald-light)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}
-              >
-                <span>Master AES LBO Spreadsheet</span>
-                <ExternalLink size={12} />
-              </a>
-              <a
-                href="https://docs.google.com/spreadsheets/d/1XYt4_8lUHFFoRVV0Ui3mdQkX0jxMf_eX/edit?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: 'var(--emerald-light)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px' }}
-              >
-                <span>Master Infosys DCF Spreadsheet</span>
-                <ExternalLink size={12} />
-              </a>
-              <a
-                href={profileData.resumePdfUrl}
-                download
-                style={{ color: 'var(--gold-light)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px', marginTop: '4px' }}
-              >
-                <span>Download Finance CV (.pdf)</span>
-                <Download size={12} />
-              </a>
-            </div>
+          <div className="apple-footer-links-col">
+            <div className="apple-footer-heading">Live Verification</div>
+            <ul className="apple-footer-list">
+              <li>
+                <a
+                  href="https://docs.google.com/spreadsheets/d/1fl-OSp1XZDXeAeFNc_qnds4Q_FlYob96/edit?usp=share_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="apple-inline-link"
+                >
+                  <span>AES Corp LBO Sheet</span>
+                  <ArrowUpRight size={12} />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://docs.google.com/spreadsheets/d/1XYt4_8lUHFFoRVV0Ui3mdQkX0jxMf_eX/edit?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="apple-inline-link"
+                >
+                  <span>Infosys DCF Sheet</span>
+                  <ArrowUpRight size={12} />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={profileData.resumePdfUrl}
+                  download
+                  className="apple-inline-link"
+                >
+                  <span>Finance CV (.pdf)</span>
+                  <Download size={12} />
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="footer-disclaimer">
+        <div className="apple-footer-disclaimer">
           <strong>BASIS OF PREPARATION &amp; INSTITUTIONAL DISCLAIMER:</strong> The financial models, LBO schedules, discounted cash flow valuations, and trading multiples presented across this portfolio website were independently constructed by Angshurpita Ganguly from publicly available SEC Form 10-K filings, annual reports, investor presentations, and market benchmarks for job application and financial modeling evaluation purposes. They do not constitute formal investment advice, tax counseling, fairness opinions, or solicitations to buy or sell securities. All checks across sources and uses, debt schedules, and balance sheets are verified to PASS.
         </div>
 
-        <div className="footer-bottom">
+        <div className="apple-footer-bottom">
           <div>
             © {new Date().getFullYear()} Angshurpita Ganguly • Investment Banking Portfolio • Ready for Vercel Deployment
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--emerald-light)' }}>
+          <div className="apple-status-pass">
             <ShieldCheck size={14} />
             <span>All 6 Models Formulaically Verified</span>
           </div>

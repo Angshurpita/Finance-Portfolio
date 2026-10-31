@@ -54,13 +54,3 @@ export const profileData = {
   ]
 };
 
-export const liveMarketTickers = [
-  { ticker: "INFY", name: "Infosys Ltd", price: "₹1,115.20", change: "-0.45%", isUp: false, exchange: "NSE" },
-  { ticker: "AES", name: "The AES Corp", price: "$15.00", change: "+1.35%", isUp: true, exchange: "NYSE" },
-  { ticker: "TRENT", name: "Trent Limited", price: "₹3,366.70", change: "+2.10%", isUp: true, exchange: "NSE" },
-  { ticker: "PIDILITIND", name: "Pidilite Ind.", price: "₹3,124.50", change: "-0.20%", isUp: false, exchange: "NSE" },
-  { ticker: "US10Y", name: "US 10-Yr Yield", price: "4.28%", change: "+0.02", isUp: true, exchange: "CBOE" },
-  { ticker: "IN10Y", name: "India 10-Yr G-Sec", price: "6.72%", change: "-0.01", isUp: false, exchange: "RBI" },
-  { ticker: "SOFR", name: "Secured Overnight", price: "3.75%", change: "0.00", isUp: true, exchange: "NY FED" },
-  { ticker: "BRENT", name: "Brent Crude", price: "$74.20/bbl", change: "-0.85%", isUp: false, exchange: "ICE" }
-];
