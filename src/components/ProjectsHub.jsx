@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 import { projectsData } from '../data/projectsData';
-import { ExternalLink, Download, ArrowUpRight, LayoutGrid, TableProperties, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Download, ArrowUpRight, ChevronRight, LayoutGrid, TableProperties, ShieldCheck, CheckCircle2 } from 'lucide-react';
 
 export const ProjectsHub = ({ onSelectProject }) => {
   const [filter, setFilter] = useState('ALL');
   const [viewMode, setViewMode] = useState('cards'); // 'cards' | 'table'
 
+  const lboCount = projectsData.filter(p => p.category.includes('LBO')).length;
+  const dcfCount = projectsData.filter(p => p.category.includes('DCF')).length;
+  const compsCount = projectsData.filter(p => p.category.includes('Trading Comps') || p.category.includes('Precedent')).length;
+  const maCount = projectsData.filter(p => p.category.includes('M&A') || p.category.includes('Merger')).length;
+  const operatingCount = projectsData.filter(p => p.category.includes('3-Statement')).length;
+
   const filteredProjects = projectsData.filter((p) => {
     if (filter === 'ALL') return true;
+    if (filter === 'MA') return p.category.includes('M&A') || p.category.includes('Merger');
     if (filter === 'LBO') return p.category.includes('LBO');
     if (filter === 'DCF') return p.category.includes('DCF');
-    if (filter === 'COMPS') return p.category.includes('Trading Comps');
+    if (filter === 'COMPS') return p.category.includes('Trading Comps') || p.category.includes('Precedent');
     if (filter === 'OPERATING') return p.category.includes('3-Statement');
     return true;
   });
@@ -24,9 +31,9 @@ export const ProjectsHub = ({ onSelectProject }) => {
               <ShieldCheck size={14} />
               <span>TRANSACTION DIRECTORY</span>
             </div>
-            <h2 className="apple-section-title">Underwritten Financial Models (6)</h2>
+            <h2 className="apple-section-title">Underwritten Financial Models ({projectsData.length})</h2>
             <p className="apple-section-desc">
-              All six financial models are accessible via direct Google Sheets links for real-time formula verification and downloadable as standalone Excel workbooks.
+              All {projectsData.length} institutional financial models are accessible via direct Google Sheets links for formula-level verification and downloadable as standalone Excel workbooks.
             </p>
           </div>
 
@@ -40,32 +47,39 @@ export const ProjectsHub = ({ onSelectProject }) => {
                 All Models ({projectsData.length})
               </button>
               <button
+                className={`apple-filter-pill ${filter === 'MA' ? 'active' : ''}`}
+                onClick={() => setFilter('MA')}
+                id="filter-btn-ma"
+              >
+                M&amp;A / Mergers ({maCount})
+              </button>
+              <button
                 className={`apple-filter-pill ${filter === 'LBO' ? 'active' : ''}`}
                 onClick={() => setFilter('LBO')}
                 id="filter-btn-lbo"
               >
-                LBO &amp; Buyouts (2)
+                LBO &amp; Buyouts ({lboCount})
               </button>
               <button
                 className={`apple-filter-pill ${filter === 'DCF' ? 'active' : ''}`}
                 onClick={() => setFilter('DCF')}
                 id="filter-btn-dcf"
               >
-                DCF &amp; Intrinsic (2)
+                DCF &amp; Intrinsic ({dcfCount})
               </button>
               <button
                 className={`apple-filter-pill ${filter === 'COMPS' ? 'active' : ''}`}
                 onClick={() => setFilter('COMPS')}
                 id="filter-btn-comps"
               >
-                Trading Comps (1)
+                Trading Comps ({compsCount})
               </button>
               <button
                 className={`apple-filter-pill ${filter === 'OPERATING' ? 'active' : ''}`}
                 onClick={() => setFilter('OPERATING')}
                 id="filter-btn-operating"
               >
-                3-Statement Operating (1)
+                3-Statement ({operatingCount})
               </button>
             </div>
 
@@ -131,15 +145,17 @@ export const ProjectsHub = ({ onSelectProject }) => {
                     </div>
 
                     <div className="apple-metric-tile">
-                      <span className="apple-tile-label">Assessment</span>
-                      <span className="apple-tile-val" style={{ fontSize: '0.88rem', color: '#E5E5EA' }}>
-                        {project.summaryMetrics.badge}
-                      </span>
+                      <span className="apple-tile-label">Investment Assessment</span>
+                      <div className={`apple-assessment-badge tone-${project.summaryMetrics.tone || 'neutral'}`}>
+                        {project.summaryMetrics.tone === 'negative' && '▼ '}
+                        {project.summaryMetrics.tone === 'positive' && '▲ '}
+                        <span>{project.summaryMetrics.badge}</span>
+                      </div>
                     </div>
 
                     <div className="apple-metric-tile">
                       <span className="apple-tile-label">Target Asset</span>
-                      <span className="apple-tile-val" style={{ fontSize: '0.82rem', color: '#86868B' }}>
+                      <span className="apple-tile-val" style={{ fontSize: '0.86rem', fontWeight: 600, color: 'var(--apple-text-primary)' }}>
                         {project.company}
                       </span>
                     </div>
@@ -209,20 +225,20 @@ export const ProjectsHub = ({ onSelectProject }) => {
                   <tr key={p.id} id={`league-row-${p.projectNumber}`}>
                     <td className="num">#{p.projectNumber}</td>
                     <td>
-                      <div style={{ fontWeight: '600', color: '#F5F5F7' }}>{p.company}</div>
-                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: '#86868B' }}>
+                      <div style={{ fontWeight: '600', color: 'var(--apple-text-primary)' }}>{p.company}</div>
+                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.74rem', color: 'var(--apple-text-tertiary)' }}>
                         {p.ticker}
                       </div>
                     </td>
                     <td>
                       <span className="apple-table-category-tag">{p.category}</span>
                     </td>
-                    <td style={{ color: '#86868B' }}>{p.sector}</td>
+                    <td style={{ color: 'var(--apple-text-secondary)' }}>{p.sector}</td>
                     <td>
-                      <div style={{ fontWeight: '600', color: '#2997FF', fontFamily: 'var(--font-mono)' }}>
+                      <div style={{ fontWeight: '600', color: 'var(--apple-blue)', fontFamily: 'var(--font-mono)' }}>
                         {p.summaryMetrics.headline}
                       </div>
-                      <div style={{ fontSize: '0.74rem', color: '#86868B' }}>
+                      <div style={{ fontSize: '0.74rem', color: 'var(--apple-text-tertiary)' }}>
                         {p.summaryMetrics.badge}
                       </div>
                     </td>

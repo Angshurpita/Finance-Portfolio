@@ -1,7 +1,7 @@
 import React from 'react';
 import { profileData } from '../data/profileData';
 import { projectsData } from '../data/projectsData';
-import { ShieldCheck, Download, ChevronRight, FileSpreadsheet, ArrowUpRight } from 'lucide-react';
+import { Download, ChevronRight, FileSpreadsheet, ArrowUpRight } from 'lucide-react';
 
 export const HeroSection = ({ onSelectProject }) => {
   return (
@@ -26,7 +26,7 @@ export const HeroSection = ({ onSelectProject }) => {
 
             <div className="apple-hero-actions">
               <a href="#models" className="apple-btn-primary" id="hero-cta-explore">
-                <span>View Models Ledger (6)</span>
+                <span>View Models Ledger ({projectsData.length})</span>
                 <ChevronRight size={15} />
               </a>
               <a
@@ -85,15 +85,21 @@ export const HeroSection = ({ onSelectProject }) => {
                   >
                     <div className="apple-deal-cell-main">
                       <div className="apple-deal-title-line">
-                        <span className="apple-deal-ticker">{project.ticker}</span>
+                        <span className="apple-deal-tag">#{String(project.projectNumber).padStart(2, '0')}</span>
                         <span className="apple-deal-name">{project.company}</span>
+                        <span className="apple-deal-ticker-badge">{project.ticker.split(' / ')[0]}</span>
                       </div>
                       <div className="apple-deal-subtitle">{project.subtitle}</div>
                     </div>
                     <div className="apple-deal-cell-badge">
-                      <span className="apple-metric-pill">
-                        {project.summaryMetrics.badge || project.summaryMetrics.headline}
-                      </span>
+                      <div className="apple-deal-metric-stack">
+                        <span className="apple-deal-headline">{project.summaryMetrics.headline}</span>
+                        <span className={`apple-metric-pill tone-${project.summaryMetrics.tone || 'neutral'}`}>
+                          {project.summaryMetrics.tone === 'negative' && '▼ '}
+                          {project.summaryMetrics.tone === 'positive' && '▲ '}
+                          {project.summaryMetrics.badge}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 ))}

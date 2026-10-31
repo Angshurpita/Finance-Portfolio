@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, ExternalLink, Download, ArrowUpRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { X, Download, ArrowUpRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
 
 export const DealModal = ({ project, onClose }) => {
   const [activeTab, setActiveTab] = useState('memo');
@@ -81,13 +81,13 @@ export const DealModal = ({ project, onClose }) => {
               Financial Projections
             </button>
           )}
-          {(project.sourcesAndUses || project.valuationBridge || project.debtStructure || project.peerTable) && (
+          {(project.sourcesAndUses || project.valuationBridge || project.debtStructure || project.peerTable || project.dealTerms || project.precedentTransactions) && (
             <button
               className={`apple-modal-tab-pill ${activeTab === 'structure' ? 'active' : ''}`}
               onClick={() => setActiveTab('structure')}
               id="modal-tab-structure"
             >
-              {project.sourcesAndUses ? 'Sources & Uses / Capital Structure' : 'Valuation Methodology'}
+              {project.sourcesAndUses ? 'Sources & Uses / Capital Structure' : project.dealTerms ? 'M&A Structure & Terms' : project.precedentTransactions ? 'Precedent Transactions' : 'Valuation Methodology'}
             </button>
           )}
           {project.sensitivityGrid && (
@@ -186,10 +186,10 @@ export const DealModal = ({ project, onClose }) => {
                       <table className="apple-league-table">
                         <tbody>
                           {project.sourcesAndUses.sources.map((s, idx) => (
-                            <tr key={idx} style={s.isTotal ? { fontWeight: '700', borderTop: '1px solid rgba(255,255,255,0.2)' } : s.highlight ? { color: '#2997FF' } : {}}>
+                            <tr key={idx} style={s.isTotal ? { fontWeight: '700', borderTop: '1px solid rgba(0,0,0,0.12)' } : s.highlight ? { color: '#0066CC' } : {}}>
                               <td>{s.item}</td>
                               <td className="num" style={{ textAlign: 'right' }}>{s.amount}</td>
-                              <td className="num" style={{ textAlign: 'right', color: '#86868B' }}>{s.pct}</td>
+                              <td className="num" style={{ textAlign: 'right', color: '#6B7280' }}>{s.pct}</td>
                             </tr>
                           ))}
                         </tbody>
@@ -201,10 +201,10 @@ export const DealModal = ({ project, onClose }) => {
                       <table className="apple-league-table">
                         <tbody>
                           {project.sourcesAndUses.uses.map((u, idx) => (
-                            <tr key={idx} style={u.isTotal ? { fontWeight: '700', borderTop: '1px solid rgba(255,255,255,0.2)' } : {}}>
+                            <tr key={idx} style={u.isTotal ? { fontWeight: '700', borderTop: '1px solid rgba(0,0,0,0.12)' } : {}}>
                               <td>{u.item}</td>
                               <td className="num" style={{ textAlign: 'right' }}>{u.amount}</td>
-                              <td className="num" style={{ textAlign: 'right', color: '#86868B' }}>{u.pct}</td>
+                              <td className="num" style={{ textAlign: 'right', color: '#6B7280' }}>{u.pct}</td>
                             </tr>
                           ))}
                         </tbody>
@@ -221,7 +221,7 @@ export const DealModal = ({ project, onClose }) => {
                     <table className="apple-league-table">
                       <tbody>
                         {project.returnsBridge.map((item, idx) => (
-                          <tr key={idx} style={item.highlight ? { background: 'rgba(41, 151, 255, 0.1)', fontWeight: '700', color: '#2997FF' } : {}}>
+                          <tr key={idx} style={item.highlight ? { background: 'rgba(0, 102, 204, 0.08)', fontWeight: '700', color: '#0066CC' } : {}}>
                             <td>{item.step}</td>
                             <td className="num" style={{ textAlign: 'right' }}>{item.value}</td>
                           </tr>
@@ -239,10 +239,10 @@ export const DealModal = ({ project, onClose }) => {
                     <table className="apple-league-table">
                       <tbody>
                         {project.valuationBridge.map((item, idx) => (
-                          <tr key={idx} style={item.highlight ? { background: 'rgba(41, 151, 255, 0.1)', fontWeight: '700', color: '#2997FF' } : {}}>
+                          <tr key={idx} style={item.highlight ? { background: 'rgba(0, 102, 204, 0.08)', fontWeight: '700', color: '#0066CC' } : {}}>
                             <td>{item.step}</td>
                             <td className="num" style={{ textAlign: 'right' }}>{item.value}</td>
-                            {item.pct && <td className="num" style={{ textAlign: 'right', color: '#86868B' }}>{item.pct}</td>}
+                            {item.pct && <td className="num" style={{ textAlign: 'right', color: '#6B7280' }}>{item.pct}</td>}
                           </tr>
                         ))}
                       </tbody>
@@ -306,6 +306,44 @@ export const DealModal = ({ project, onClose }) => {
                   </div>
                 </div>
               )}
+
+              {project.dealTerms && (
+                <div>
+                  <div className="apple-memo-heading">M&amp;A TRANSACTION TERMS &amp; CAPITAL STRUCTURE</div>
+                  <div className="apple-table-glass-wrap" style={{ marginTop: '12px' }}>
+                    <table className="apple-league-table">
+                      <tbody>
+                        {project.dealTerms.map((item, idx) => (
+                          <tr key={idx} style={item.highlight ? { background: 'rgba(0, 102, 204, 0.08)', fontWeight: '700', color: '#0066CC' } : {}}>
+                            <td>{item.step}</td>
+                            <td className="num" style={{ textAlign: 'right' }}>{item.value}</td>
+                            {item.pct && <td className="num" style={{ textAlign: 'right', color: '#6B7280' }}>{item.pct}</td>}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+
+              {project.precedentTransactions && (
+                <div>
+                  <div className="apple-memo-heading">LANDMARK INDIAN FINANCIAL ALL-STOCK MERGERS</div>
+                  <div className="apple-table-glass-wrap" style={{ marginTop: '12px' }}>
+                    <table className="apple-league-table">
+                      <tbody>
+                        {project.precedentTransactions.map((item, idx) => (
+                          <tr key={idx}>
+                            <td style={{ fontWeight: '600' }}>{item.step}</td>
+                            <td className="num" style={{ textAlign: 'right', color: '#0066CC' }}>{item.value}</td>
+                            {item.pct && <td className="num" style={{ textAlign: 'right', color: '#6B7280' }}>{item.pct}</td>}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
@@ -332,7 +370,7 @@ export const DealModal = ({ project, onClose }) => {
                   <tbody>
                     {project.sensitivityGrid.rows.map((row, rIdx) => (
                       <tr key={rIdx}>
-                        <td style={{ fontWeight: '600', textAlign: 'left', color: '#F5F5F7' }}>
+                        <td style={{ fontWeight: '600', textAlign: 'left', color: '#111827' }}>
                           {row.label}
                         </td>
                         {row.values.map((val, cIdx) => {
@@ -341,9 +379,9 @@ export const DealModal = ({ project, onClose }) => {
                             <td
                               key={cIdx}
                               className="num"
-                              style={isBase ? { background: 'rgba(41, 151, 255, 0.2)', color: '#2997FF', fontWeight: '700', borderRadius: '4px' } : {}}
+                              style={isBase ? { background: 'rgba(0, 102, 204, 0.1)', color: '#0052B4', fontWeight: '700', borderRadius: '6px' } : {}}
                             >
-                              {val} {isBase && <span style={{ fontSize: '0.68rem', display: 'block', color: '#86868B' }}>(Base)</span>}
+                              {val} {isBase && <span style={{ fontSize: '0.68rem', display: 'block', color: '#6B7280' }}>(Base)</span>}
                             </td>
                           );
                         })}

@@ -1,6 +1,9 @@
 import React from 'react';
 import { profileData } from '../data/profileData';
+import { projectsData } from '../data/projectsData';
 import { ShieldCheck, ArrowUpRight, Download } from 'lucide-react';
+
+const CURRENT_YEAR = new Date().getFullYear();
 
 export const Footer = () => {
   return (
@@ -20,7 +23,7 @@ export const Footer = () => {
           <div className="apple-footer-links-col">
             <div className="apple-footer-heading">Navigation</div>
             <ul className="apple-footer-list">
-              <li><a href="#models">Financial Models (6)</a></li>
+              <li><a href="#models">Financial Models ({projectsData.length})</a></li>
               <li><a href="#methodology">Modeling Standards</a></li>
               <li><a href="#profile">Candidate Profile</a></li>
             </ul>
@@ -53,6 +56,17 @@ export const Footer = () => {
               </li>
               <li>
                 <a
+                  href="https://docs.google.com/spreadsheets/d/1IUe0UQRZvAz-o12iACFCWCSIvDbdC8V1/edit?usp=share_link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="apple-inline-link"
+                >
+                  <span>PFC &amp; REC Merger Sheet</span>
+                  <ArrowUpRight size={12} />
+                </a>
+              </li>
+              <li>
+                <a
                   href={profileData.resumePdfUrl}
                   download
                   className="apple-inline-link"
@@ -71,11 +85,11 @@ export const Footer = () => {
 
         <div className="apple-footer-bottom">
           <div>
-            © {new Date().getFullYear()} Angshurpita Ganguly • Investment Banking Portfolio • Ready for Vercel Deployment
+            © {CURRENT_YEAR} Angshurpita Ganguly • Investment Banking Portfolio • Ready for Vercel Deployment
           </div>
           <div className="apple-status-pass">
             <ShieldCheck size={14} />
-            <span>All 6 Models Formulaically Verified</span>
+            <span>All {projectsData.length} Models Formulaically Verified</span>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ An institutional-grade portfolio dashboard engineered for Investment Banking, Pr
 
 ---
 
-## 🏛️ Featured Financial Models & Spreadsheets
+## 🏛️ Featured Financial Models & Spreadsheets (8 Institutional Models)
 
 | # | Transaction / Model | Company | Ticker | Methodology | Live Verification |
 |---|---------------------|---------|--------|-------------|-------------------|
@@ -14,6 +14,8 @@ An institutional-grade portfolio dashboard engineered for Investment Banking, Pr
 | **4** | [AES Corp 3-Statement & Capex Build](public/downloads/AES_Corporation_3Statement_Operating_Model.xlsx) | The AES Corporation | `NYSE: AES` | 4-Segment Forecast, $23.2B Capex & Cash Sweep | [Google Sheet ↗](https://docs.google.com/spreadsheets/d/1fl-OSp1XZDXeAeFNc_qnds4Q_FlYob96/edit?usp=share_link) |
 | **5** | [Trent Ltd (Tata Retail) DCF & Comps](public/downloads/Trent_Tata_Retail_DCF_and_Comps.xlsx) | Trent Limited | `NSE: TRENT` | 1,000+ Store Expansion DCF & Peer Comps | [Google Sheet ↗](https://docs.google.com/spreadsheets/d/1AHu9rK8FCMzDrPfkKrVjisFIoS4Vb0mA/edit?usp=sharing) |
 | **6** | [Pidilite Industries LBO Model](public/downloads/Pidilite_Industries_LBO_Model.xlsx) | Pidilite Industries | `NSE: PIDILITIND` | 28% Premium Buyout & Dual-Tranche Amortization | [Google Sheet ↗](https://docs.google.com/spreadsheets/d/1V2PVe1kNvEmUNse3SCQh7_vk69fjhkCU/edit?usp=sharing) |
+| **7** | [PFC & REC Mega M&A Accretion / Dilution Model](public/downloads/PFC_REC_Merger_Model_Accretion_Valuation.xlsx) | PFC Ltd & REC Ltd | `NSE: PFC / RECLTD` | ₹41,135 Cr ($5.0B+) Amalgamation, 0.88x Swap & 10 bps Debt Synergy | [Google Sheet ↗](https://docs.google.com/spreadsheets/d/1IUe0UQRZvAz-o12iACFCWCSIvDbdC8V1/edit?usp=share_link) |
+| **8** | [REC Ltd & PFC Trading Comps & Precedent Mergers](public/downloads/REC_PFC_Trading_Comps_Precedents.xlsx) | REC Limited & PFC | `NSE: RECLTD / PFC` | Peer Multiples (IREDA, IRFC, HUDCO) vs 6 Landmark All-Stock Indian Mergers | [Google Sheet ↗](https://docs.google.com/spreadsheets/d/1IUe0UQRZvAz-o12iACFCWCSIvDbdC8V1/edit?usp=share_link) |
 
 ---
 
@@ -45,14 +47,14 @@ An institutional-grade portfolio dashboard engineered for Investment Banking, Pr
 Configured for **zero-configuration deployment on Vercel** with `vercel.json` included.
 
 ### Option A: Via GitHub (Recommended)
-1. Push this repository to your GitHub account:
+1. Push this repository to GitHub:
    ```bash
-   git remote add origin https://github.com/<your-username>/finance-portfolio.git
+   git remote add origin https://github.com/Angshurpita/Finance-Portfolio.git
    git branch -M main
    git push -u origin main
    ```
 2. Log into [vercel.com](https://vercel.com) and click **Add New... -> Project**.
-3. Import the `finance-portfolio` repository.
+3. Import the `Angshurpita/Finance-Portfolio` repository.
 4. Framework Preset will automatically detect **Vite** (`npm run build`, output: `dist`).
 5. Click **Deploy**.
 
@@ -69,5 +71,6 @@ vercel
 ```bash
 npm install
 npm run dev
+npm run lint
 npm run build
 ```

@@ -1,6 +1,6 @@
 import React from 'react';
 import { profileData } from '../data/profileData';
-import { FileText, ExternalLink, CheckCircle } from 'lucide-react';
+import { FileText, CheckCircle } from 'lucide-react';
 
 export const Navbar = () => {
   return (
@@ -18,7 +18,7 @@ export const Navbar = () => {
           <ul className="apple-nav-list">
             <li>
               <a href="#models" className="apple-nav-item" id="nav-link-models">
-                Financial Models (6)
+                Financial Models (8)
               </a>
             </li>
             <li>
@@ -50,7 +50,7 @@ export const Navbar = () => {
             id="nav-verify-spreadsheets-btn"
           >
             <CheckCircle size={13} />
-            <span>Verify Models (6)</span>
+            <span>Verify Models (8)</span>
           </a>
         </div>
       </div>

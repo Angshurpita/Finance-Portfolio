@@ -6,7 +6,7 @@ export const profileData = {
   location: "Kolkata, India",
   phone: "+91 8172068803",
   email: "angshuganguly777@gmail.com",
-  linkedin: "https://www.linkedin.com/in/angshurpita-ganguly/",
+  linkedin: "https://www.linkedin.com/in/angshurpita-g/",
   resumePdfUrl: "/downloads/Angshurpita_Ganguly_Finance_CV.pdf",
   education: {
     institution: "Government College of Engineering and Ceramic Technology",
@@ -16,6 +16,12 @@ export const profileData = {
     grade: "CGPA: 9.72 / 10.00"
   },
   credentials: [
+    {
+      title: "McKinsey Forward Program",
+      issuer: "McKinsey & Company",
+      year: "2026",
+      desc: "Selected for McKinsey's flagship leadership & business problem-solving accelerator; advanced training in structured problem framing, top-down executive communication, digital strategy, and agile workflow leadership."
+    },
     {
       title: "J.P. Morgan Investment Banking Simulation",
       issuer: "Forage",
@@ -47,8 +53,8 @@ export const profileData = {
     languages: ["English (Fluent)", "Hindi (Fluent)", "Bengali (Native)"]
   },
   stats: [
-    { label: "Verified Financial Models", value: "6" },
-    { label: "Transaction Value Underwritten", value: "$56B+" },
+    { label: "Verified Financial Models", value: "8" },
+    { label: "Transaction Value Underwritten", value: "$85B+" },
     { label: "Average Model Integrity Checks", value: "100% PASS" },
     { label: "Academic Excellence", value: "9.72 CGPA" }
   ]

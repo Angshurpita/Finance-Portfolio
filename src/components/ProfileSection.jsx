@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { profileData } from '../data/profileData';
-import { GraduationCap, Award, Mail, Phone, MapPin, Download, Check, Copy, ArrowUpRight } from 'lucide-react';
+import { GraduationCap, Award, Mail, Phone, MapPin, Download, Check, Copy } from 'lucide-react';
 
 export const ProfileSection = () => {
   const [copiedEmail, setCopiedEmail] = useState(false);
