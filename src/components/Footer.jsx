@@ -1,7 +1,7 @@
 import React from 'react';
 import { profileData } from '../data/profileData';
 import { projectsData } from '../data/projectsData';
-import { ShieldCheck, ArrowUpRight, Download } from 'lucide-react';
+import { ShieldCheck, ArrowUpRight } from 'lucide-react';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -68,11 +68,12 @@ export const Footer = () => {
               <li>
                 <a
                   href={profileData.resumePdfUrl}
-                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="apple-inline-link"
                 >
-                  <span>Finance CV (.pdf)</span>
-                  <Download size={12} />
+                  <span>Angshurpita Ganguly CV (.pdf)</span>
+                  <ArrowUpRight size={12} />
                 </a>
               </li>
             </ul>

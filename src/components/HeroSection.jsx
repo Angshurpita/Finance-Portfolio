@@ -31,12 +31,13 @@ export const HeroSection = ({ onSelectProject }) => {
               </a>
               <a
                 href={profileData.resumePdfUrl}
-                download="Angshurpita_Ganguly_Finance_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="apple-btn-secondary"
                 id="hero-cta-resume"
               >
                 <Download size={15} />
-                <span>Download Finance CV (.pdf)</span>
+                <span>View CV (.pdf)</span>
               </a>
               <a
                 href="https://docs.google.com/spreadsheets/d/1fl-OSp1XZDXeAeFNc_qnds4Q_FlYob96/edit?usp=share_link"

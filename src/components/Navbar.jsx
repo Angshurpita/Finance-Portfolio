@@ -37,12 +37,13 @@ export const Navbar = () => {
         <div className="apple-nav-actions">
           <a
             href={profileData.resumePdfUrl}
-            download="Angshurpita_Ganguly_Finance_CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="apple-btn-secondary apple-btn-sm"
             id="nav-download-resume-btn"
           >
             <FileText size={13} />
-            <span>Finance CV (.pdf)</span>
+            <span>View CV (.pdf)</span>
           </a>
           <a
             href="#models"

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { profileData } from '../data/profileData';
-import { GraduationCap, Award, Mail, Phone, MapPin, Download, Check, Copy } from 'lucide-react';
+import { GraduationCap, Award, Mail, Phone, MapPin, Download, Check, Copy, FileText } from 'lucide-react';
 
 export const ProfileSection = () => {
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -44,12 +44,22 @@ export const ProfileSection = () => {
               <div className="apple-profile-actions">
                 <a
                   href={profileData.resumePdfUrl}
-                  download="Angshurpita_Ganguly_Finance_CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="apple-btn-primary"
+                  id="profile-view-cv-btn"
+                >
+                  <FileText size={15} />
+                  <span>View CV (.pdf)</span>
+                </a>
+                <a
+                  href={profileData.resumePdfUrl}
+                  download="Angshurpita_Ganguly_Finance_CV.pdf"
+                  className="apple-btn-secondary"
                   id="profile-download-cv-btn"
                 >
                   <Download size={15} />
-                  <span>Download Finance CV (.pdf)</span>
+                  <span>Download</span>
                 </a>
                 <button
                   onClick={handleCopyEmail}
