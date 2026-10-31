@@ -1,9 +1,9 @@
 import React from 'react';
 import { profileData } from '../data/profileData';
 import { projectsData } from '../data/projectsData';
-import { Download, ChevronRight, FileSpreadsheet, ArrowUpRight } from 'lucide-react';
+import { FileText, ChevronRight, FileSpreadsheet, ArrowUpRight } from 'lucide-react';
 
-export const HeroSection = ({ onSelectProject }) => {
+export const HeroSection = ({ onSelectProject, onOpenCv }) => {
   return (
     <section className="apple-hero-section" id="hero">
       <div className="apple-glow-backdrop"></div>
@@ -29,16 +29,16 @@ export const HeroSection = ({ onSelectProject }) => {
                 <span>View Models Ledger ({projectsData.length})</span>
                 <ChevronRight size={15} />
               </a>
-              <a
-                href={profileData.resumePdfUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
+                onClick={onOpenCv}
                 className="apple-btn-secondary"
                 id="hero-cta-resume"
+                style={{ cursor: 'pointer' }}
               >
-                <Download size={15} />
+                <FileText size={15} />
                 <span>View CV (.pdf)</span>
-              </a>
+              </button>
               <a
                 href="https://docs.google.com/spreadsheets/d/1fl-OSp1XZDXeAeFNc_qnds4Q_FlYob96/edit?usp=share_link"
                 target="_blank"

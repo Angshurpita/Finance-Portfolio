@@ -5,7 +5,7 @@ import { ShieldCheck, ArrowUpRight } from 'lucide-react';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-export const Footer = () => {
+export const Footer = ({ onOpenCv }) => {
   return (
     <footer className="apple-footer" id="footer">
       <div className="apple-container">
@@ -66,15 +66,15 @@ export const Footer = () => {
                 </a>
               </li>
               <li>
-                <a
-                  href={profileData.resumePdfUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={onOpenCv}
                   className="apple-inline-link"
+                  style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', font: 'inherit', color: 'inherit' }}
                 >
                   <span>Angshurpita Ganguly CV (.pdf)</span>
                   <ArrowUpRight size={12} />
-                </a>
+                </button>
               </li>
             </ul>
           </div>

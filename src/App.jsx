@@ -6,6 +6,7 @@ import { MethodologySection } from './components/MethodologySection';
 import { ProfileSection } from './components/ProfileSection';
 import { Footer } from './components/Footer';
 import { DealModal } from './components/DealModal';
+import { CvModal } from './components/CvModal';
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -33,12 +34,14 @@ class ErrorBoundary extends Component {
 
 export function App() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [isCvOpen, setIsCvOpen] = useState(false);
 
-  // Close modal on Escape key press
+  // Close modals on Escape key press
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
         setSelectedProject(null);
+        setIsCvOpen(false);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -48,29 +51,39 @@ export function App() {
   return (
     <ErrorBoundary>
       <div className="portfolio-app-root">
-        {/* Liquid Glass Apple-style Navigation */}
-        <Navbar />
+        {/* Navigation */}
+        <Navbar onOpenCv={() => setIsCvOpen(true)} />
 
-        {/* Hero Section with Institutional Apple Aesthetic */}
-        <HeroSection onSelectProject={setSelectedProject} />
+        {/* Hero Section */}
+        <HeroSection
+          onSelectProject={setSelectedProject}
+          onOpenCv={() => setIsCvOpen(true)}
+        />
 
-        {/* Main Financial Models Hub (6 Underwritten Projects) */}
+        {/* Main Financial Models Hub */}
         <ProjectsHub onSelectProject={setSelectedProject} />
 
-        {/* Financial Modeling Standards & Institutional Rigor */}
+        {/* Financial Modeling Standards */}
         <MethodologySection />
 
-        {/* Candidate Background, Academic Excellence (9.72 CGPA), and CV */}
-        <ProfileSection />
+        {/* Candidate Background & Credentials */}
+        <ProfileSection onOpenCv={() => setIsCvOpen(true)} />
 
-        {/* Institutional Compliance & Footnotes Footer */}
-        <Footer />
+        {/* Footer */}
+        <Footer onOpenCv={() => setIsCvOpen(true)} />
 
-        {/* Full-Screen Deal Memorandum & Model Inspector Modal */}
+        {/* Full-Screen Deal Memorandum Modal */}
         {selectedProject && (
           <DealModal
             project={selectedProject}
             onClose={() => setSelectedProject(null)}
+          />
+        )}
+
+        {/* Dedicated In-App CV Modal Viewer */}
+        {isCvOpen && (
+          <CvModal
+            onClose={() => setIsCvOpen(false)}
           />
         )}
       </div>

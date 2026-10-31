@@ -2,7 +2,7 @@ import React from 'react';
 import { profileData } from '../data/profileData';
 import { FileText, CheckCircle } from 'lucide-react';
 
-export const Navbar = () => {
+export const Navbar = ({ onOpenCv }) => {
   return (
     <header className="apple-nav" id="main-navigation">
       <div className="apple-nav-container">
@@ -10,7 +10,7 @@ export const Navbar = () => {
           <div className="apple-monogram">AG</div>
           <div className="apple-brand-text">
             <span className="apple-candidate-name">{profileData.name}</span>
-            <span className="apple-candidate-division">Investment Banking &amp; Private Equity</span>
+            <span className="apple-candidate-division">Financial Analysis &amp; Valuation</span>
           </div>
         </a>
 
@@ -35,16 +35,16 @@ export const Navbar = () => {
         </nav>
 
         <div className="apple-nav-actions">
-          <a
-            href={profileData.resumePdfUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            onClick={onOpenCv}
             className="apple-btn-secondary apple-btn-sm"
             id="nav-download-resume-btn"
+            style={{ cursor: 'pointer' }}
           >
             <FileText size={13} />
             <span>View CV (.pdf)</span>
-          </a>
+          </button>
           <a
             href="#models"
             className="apple-btn-primary apple-btn-sm"

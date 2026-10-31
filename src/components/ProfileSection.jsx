@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { profileData } from '../data/profileData';
 import { GraduationCap, Award, Mail, Phone, MapPin, Download, Check, Copy, FileText } from 'lucide-react';
 
-export const ProfileSection = () => {
+export const ProfileSection = ({ onOpenCv }) => {
   const [copiedEmail, setCopiedEmail] = useState(false);
 
   const handleCopyEmail = () => {
@@ -42,16 +42,16 @@ export const ProfileSection = () => {
               </div>
 
               <div className="apple-profile-actions">
-                <a
-                  href={profileData.resumePdfUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={onOpenCv}
                   className="apple-btn-primary"
                   id="profile-view-cv-btn"
+                  style={{ cursor: 'pointer' }}
                 >
                   <FileText size={15} />
                   <span>View CV (.pdf)</span>
-                </a>
+                </button>
                 <a
                   href={profileData.resumePdfUrl}
                   download="Angshurpita_Ganguly_Finance_CV.pdf"
