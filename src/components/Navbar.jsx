@@ -1,5 +1,6 @@
 import React from 'react';
 import { profileData } from '../data/profileData';
+import { projectsData } from '../data/projectsData';
 import { FileText, CheckCircle } from 'lucide-react';
 
 export const Navbar = ({ onOpenCv }) => {
@@ -18,7 +19,7 @@ export const Navbar = ({ onOpenCv }) => {
           <ul className="apple-nav-list">
             <li>
               <a href="#models" className="apple-nav-item" id="nav-link-models">
-                Financial Models (8)
+                Financial Models ({projectsData.length})
               </a>
             </li>
             <li>
@@ -51,7 +52,7 @@ export const Navbar = ({ onOpenCv }) => {
             id="nav-verify-spreadsheets-btn"
           >
             <CheckCircle size={13} />
-            <span>Verify Models (8)</span>
+            <span>Verify Models ({projectsData.length})</span>
           </a>
         </div>
       </div>

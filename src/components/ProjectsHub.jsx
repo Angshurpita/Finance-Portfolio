@@ -8,17 +8,17 @@ export const ProjectsHub = ({ onSelectProject }) => {
 
   const lboCount = projectsData.filter(p => p.category.includes('LBO')).length;
   const dcfCount = projectsData.filter(p => p.category.includes('DCF')).length;
-  const compsCount = projectsData.filter(p => p.category.includes('Trading Comps') || p.category.includes('Precedent')).length;
+  const compsCount = projectsData.filter(p => p.peerTable || p.precedentTransactions || p.title.includes('Comps') || p.category.includes('Comps') || p.category.includes('Precedent')).length;
   const maCount = projectsData.filter(p => p.category.includes('M&A') || p.category.includes('Merger')).length;
-  const operatingCount = projectsData.filter(p => p.category.includes('3-Statement')).length;
+  const operatingCount = projectsData.filter(p => p.category.includes('3-Statement') || p.category.includes('Operating')).length;
 
   const filteredProjects = projectsData.filter((p) => {
     if (filter === 'ALL') return true;
     if (filter === 'MA') return p.category.includes('M&A') || p.category.includes('Merger');
     if (filter === 'LBO') return p.category.includes('LBO');
     if (filter === 'DCF') return p.category.includes('DCF');
-    if (filter === 'COMPS') return p.category.includes('Trading Comps') || p.category.includes('Precedent');
-    if (filter === 'OPERATING') return p.category.includes('3-Statement');
+    if (filter === 'COMPS') return p.peerTable || p.precedentTransactions || p.title.includes('Comps') || p.category.includes('Comps') || p.category.includes('Precedent');
+    if (filter === 'OPERATING') return p.category.includes('3-Statement') || p.category.includes('Operating');
     return true;
   });
 

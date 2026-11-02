@@ -10,7 +10,7 @@ export const HeroSection = ({ onSelectProject, onOpenCv }) => {
       <div className="apple-container">
         <div className="apple-eyebrow-badge">
           <span className="apple-eyebrow-dot"></span>
-          <span>INVESTMENT BANKING &amp; PRIVATE EQUITY PORTFOLIO</span>
+          <span>INVESTMENT BANKING • PRIVATE EQUITY • CORPORATE FINANCE</span>
         </div>
 
         <div className="apple-hero-grid">
@@ -21,7 +21,7 @@ export const HeroSection = ({ onSelectProject, onOpenCv }) => {
             </h1>
 
             <p className="apple-hero-lead">
-              Institutional-grade valuation and transaction models spanning mega-cap sponsor buyouts, multi-tranche debt waterfalls, 3-statement operating schedules, and intrinsic DCF underwriting. Built to Tier-1 investment bank and private equity standards.
+              Institutional-grade financial models spanning mega-cap sponsor buyouts, M&amp;A accretion/dilution, 3-statement operating schedules, and intrinsic DCF underwriting. Built to Tier-1 investment bank and private equity standards.
             </p>
 
             <div className="apple-hero-actions">

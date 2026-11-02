@@ -1,56 +1,48 @@
 # Finance Portfolio
 
-A personal finance portfolio by **Angshurpita Ganguly**, showcasing financial modeling projects across Discounted Cash Flow (DCF) valuations, Leveraged Buyout (LBO) models, M&A accretion/dilution analysis, and trading comparables.
+A personal financial modeling and transaction portfolio by **Angshurpita Ganguly** (Quantitative B.Tech IT undergraduate, Top 1% of Cohort at Government College of Engineering and Ceramic Technology), showcasing institutional models across Leveraged Buyouts (LBO), M&A Accretion/Dilution, Integrated 3-Statement Operating Models, and Discounted Cash Flow (DCF) with Relative Valuation.
 
-## Financial Models
+Targeted at Investment Banking (Front/Back Office), Private Equity, and Corporate Finance.
 
-| # | Project | Company | Focus | Links |
-|---|---------|---------|-------|-------|
-| 1 | Infosys DCF Valuation | Infosys Limited | 5-Year Unlevered DCF | [Excel](public/downloads/Infosys_DCF_Valuation_Model.xlsx) • [Google Sheets](https://docs.google.com/spreadsheets/d/1XYt4_8lUHFFoRVV0Ui3mdQkX0jxMf_eX/edit?usp=sharing) |
-| 2 | Infosys Trading Comps | Infosys Limited | Peer Multiples Analysis | [Excel](public/downloads/Infosys_Trading_Comps_Analysis.xlsx) • [Google Sheets](https://docs.google.com/spreadsheets/d/1XYt4_8lUHFFoRVV0Ui3mdQkX0jxMf_eX/edit?usp=sharing) |
-| 3 | AES Corp LBO Model | The AES Corporation | Buyout & Returns Waterfall | [Excel](public/downloads/AES_Corporation_17B_LBO_Model.xlsx) • [Google Sheets](https://docs.google.com/spreadsheets/d/1fl-OSp1XZDXeAeFNc_qnds4Q_FlYob96/edit?usp=share_link) |
-| 4 | AES Corp 3-Statement Model | The AES Corporation | Financial Statements & Capex Projections | [Excel](public/downloads/AES_Corporation_3Statement_Operating_Model.xlsx) • [Google Sheets](https://docs.google.com/spreadsheets/d/1fl-OSp1XZDXeAeFNc_qnds4Q_FlYob96/edit?usp=share_link) |
-| 5 | Trent Ltd DCF & Comps | Trent Limited (Tata Retail) | Retail DCF Valuation & Peer Comps | [Excel](public/downloads/Trent_Tata_Retail_DCF_and_Comps.xlsx) • [Google Sheets](https://docs.google.com/spreadsheets/d/1AHu9rK8FCMzDrPfkKrVjisFIoS4Vb0mA/edit?usp=sharing) |
-| 6 | Pidilite Industries LBO Model | Pidilite Industries | LBO Model & Debt Schedule | [Excel](public/downloads/Pidilite_Industries_LBO_Model.xlsx) • [Google Sheets](https://docs.google.com/spreadsheets/d/1V2PVe1kNvEmUNse3SCQh7_vk69fjhkCU/edit?usp=sharing) |
-| 7 | PFC & REC Merger Model | PFC Ltd & REC Ltd | M&A Accretion / Dilution Model | [Excel](public/downloads/PFC_REC_Merger_Model_Accretion_Valuation.xlsx) • [Google Sheets](https://docs.google.com/spreadsheets/d/1IUe0UQRZvAz-o12iACFCWCSIvDbdC8V1/edit?usp=share_link) |
-| 8 | REC & PFC Comps & Precedents | REC Limited & PFC | Peer Comps & Precedent Transactions | [Excel](public/downloads/REC_PFC_Trading_Comps_Precedents.xlsx) • [Google Sheets](https://docs.google.com/spreadsheets/d/1IUe0UQRZvAz-o12iACFCWCSIvDbdC8V1/edit?usp=share_link) |
+## Financial Modeling & Transaction Projects
+
+| # | Project | Company / Ticker | Transaction & Methodology Focus | Models & Verification |
+|---|---------|-------------------|---------------------------------|-----------------------|
+| 1 | **LBO Valuation & Buyout Model** | The AES Corporation (`NYSE: AES`) | $17.1B All-Cash Take-Private, 3-tranche recourse debt ($8.6B), 1.58x MOIC / 9.6% Gross IRR, 100% FCF sweeps, and $23.9B project debt rollover. | [Excel (.xlsx)](public/downloads/AES_Corporation_17B_LBO_Model.xlsx) • [Google Sheets](https://docs.google.com/spreadsheets/d/1fl-OSp1XZDXeAeFNc_qnds4Q_FlYob96/edit?usp=share_link) |
+| 2 | **M&A Accretion / Dilution Model** | Power Finance Corp & REC Ltd (`NSE: PFC, RECLTD`) | ₹41,135 Cr ($5.0B+) Public Minority Amalgamation, 0.88x swap ratio, 0.811x EPS-neutral breakeven, ₹554 Cr pre-tax synergies via 10 bps debt spread compression, benchmarked against 6 precedent landmark mergers. | [Excel (.xlsx)](public/downloads/PFC_REC_Merger_Model_Accretion_Valuation.xlsx) • [Google Sheets](https://docs.google.com/spreadsheets/d/1IUe0UQRZvAz-o12iACFCWCSIvDbdC8V1/edit?usp=share_link) |
+| 3 | **Integrated 3-Statement Operating Model** | Tata Motors PV (`NSE: TMPV / TATAMOTORS`) | Dynamic 5-year operating forecast (IS, BS, CFS) scaling top-line from ₹3.36T to ₹4.36T by FY31, EV vs ICE segment unit economics, automated circular interest breakers, and DSCR stress-testing under headwinds. | [Excel (.xlsx)](public/downloads/Tata_Motors_PV_3Statement_Model.xlsx) • [Google Sheets](https://docs.google.com/spreadsheets/d/1AHu9rK8FCMzDrPfkKrVjisFIoS4Vb0mA/edit?usp=sharing) |
+| 4 | **DCF Intrinsic Valuation & Peer Comps** | Infosys Ltd (`NSE: INFY / NYSE: INFY`) | 5-Year Unlevered DCF (WACC 11.4%, 4.5% g) deriving intrinsic equity value of ₹337,697 Cr (₹834.45/share, ~25.2% margin of safety) and public trading comps across TCS, HCL Tech, Wipro, and LTIMindtree. | [Excel (.xlsx)](public/downloads/Infosys_DCF_Valuation_Model.xlsx) • [Google Sheets](https://docs.google.com/spreadsheets/d/1XYt4_8lUHFFoRVV0Ui3mdQkX0jxMf_eX/edit?usp=sharing) |
+
+## Official CV Download & In-App Viewer
+
+The portfolio includes an interactive in-app PDF CV viewer and direct download link:
+- **CV Document**: [Angshurpita_Ganguly_Finance_CV.pdf](public/downloads/Angshurpita_Ganguly_Finance_CV.pdf)
 
 ## Tech Stack
 
-- **Frontend**: React, Vite
+- **Frontend**: React 19, Vite
 - **Icons**: Lucide React
-- **Styling**: CSS
+- **Design System**: Apple-inspired Liquid Glass 3D Dark Theme
+- **Spreadsheets**: OpenXML (.xlsx) and Google Sheets live integration
 
-## Getting Started
+## Local Development & Build
 
-### Local Development
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Angshurpita/Finance-Portfolio.git
-   cd Finance-Portfolio
-   ```
-
-2. Install dependencies:
+1. Install dependencies:
    ```bash
    npm install
    ```
 
-3. Start development server:
+2. Start development server:
    ```bash
    npm run dev
    ```
 
-4. Build for production:
+3. Build for production:
    ```bash
    npm run build
    ```
 
-## Deployment on Vercel
-
-The project is configured for Vercel deployment with `vercel.json`.
-
-1. Go to [vercel.com](https://vercel.com) and click **Add New... -> Project**.
-2. Import this repository (`Angshurpita/Finance-Portfolio`).
-3. Vercel automatically detects the Vite framework (`npm run build`, output directory: `dist`).
-4. Click **Deploy**.
+4. Lint code:
+   ```bash
+   npm run lint
+   ```

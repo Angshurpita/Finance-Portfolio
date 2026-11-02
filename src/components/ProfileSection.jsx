@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { profileData } from '../data/profileData';
-import { GraduationCap, Award, Mail, Phone, MapPin, Download, Check, Copy, FileText } from 'lucide-react';
+import { GraduationCap, Award, Mail, Phone, MapPin, Download, Check, Copy, FileText, Code2, Globe, Cpu } from 'lucide-react';
 
 export const ProfileSection = ({ onOpenCv }) => {
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -59,7 +59,7 @@ export const ProfileSection = ({ onOpenCv }) => {
                   id="profile-download-cv-btn"
                 >
                   <Download size={15} />
-                  <span>Download</span>
+                  <span>Download CV</span>
                 </a>
                 <button
                   onClick={handleCopyEmail}
@@ -75,7 +75,7 @@ export const ProfileSection = ({ onOpenCv }) => {
             {/* Credentials Column */}
             <div className="apple-profile-cred-col">
               <div className="apple-memo-heading" style={{ marginBottom: '14px' }}>
-                ACADEMIC EXCELLENCE &amp; PROFESSIONAL CREDENTIALS
+                ACADEMIC EXCELLENCE &amp; LEADERSHIP
               </div>
 
               {/* Education Box */}
@@ -92,6 +92,12 @@ export const ProfileSection = ({ onOpenCv }) => {
                   <div className="apple-cred-meta">
                     {profileData.education.period} • {profileData.education.location}
                   </div>
+                  {profileData.education.academicFoundations && (
+                    <div style={{ fontSize: '0.78rem', color: 'var(--apple-text-secondary)', marginTop: '8px', lineHeight: 1.45 }}>
+                      <strong style={{ color: 'var(--apple-text-primary)' }}>Relevant Foundations: </strong>
+                      {profileData.education.academicFoundations}
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -109,6 +115,67 @@ export const ProfileSection = ({ onOpenCv }) => {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Technical Skills & Quantitative Toolkit Grid */}
+          <div style={{ marginTop: '32px', paddingTop: '28px', borderTop: '1px solid var(--apple-border)' }}>
+            <div className="apple-memo-heading" style={{ marginBottom: '16px' }}>
+              TECHNICAL SKILLS, QUANTITATIVE TOOLS &amp; INTERESTS
+            </div>
+
+            <div className="apple-grid-3col" style={{ gap: '16px' }}>
+              {/* Financial Modeling & Valuation */}
+              <div className="apple-cred-card" style={{ flexDirection: 'column', alignItems: 'flex-start', padding: '16px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+                  <Cpu size={16} className="accent-blue" />
+                  <span style={{ fontWeight: 600, fontSize: '0.88rem', color: 'var(--apple-text-primary)' }}>
+                    Financial Modeling &amp; Valuation
+                  </span>
+                </div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                  {profileData.skills.modeling.map((skill, sIdx) => (
+                    <span key={sIdx} className="apple-table-category-tag" style={{ fontSize: '0.72rem', padding: '4px 8px' }}>
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Technical Tools & Quantitative Programming */}
+              <div className="apple-cred-card" style={{ flexDirection: 'column', alignItems: 'flex-start', padding: '16px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+                  <Code2 size={16} className="accent-blue" />
+                  <span style={{ fontWeight: 600, fontSize: '0.88rem', color: 'var(--apple-text-primary)' }}>
+                    Tools &amp; Quantitative Programming
+                  </span>
+                </div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                  {profileData.skills.technical.map((tool, tIdx) => (
+                    <span key={tIdx} className="apple-table-category-tag" style={{ fontSize: '0.72rem', padding: '4px 8px' }}>
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Languages & Extracurriculars */}
+              <div className="apple-cred-card" style={{ flexDirection: 'column', alignItems: 'flex-start', padding: '16px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+                  <Globe size={16} className="accent-blue" />
+                  <span style={{ fontWeight: 600, fontSize: '0.88rem', color: 'var(--apple-text-primary)' }}>
+                    Languages &amp; Extracurriculars
+                  </span>
+                </div>
+                <div style={{ fontSize: '0.78rem', color: 'var(--apple-text-secondary)', lineHeight: 1.5, marginBottom: '8px' }}>
+                  <strong style={{ color: 'var(--apple-text-primary)' }}>Languages: </strong>
+                  {profileData.skills.languages.join(' • ')}
+                </div>
+                <div style={{ fontSize: '0.78rem', color: 'var(--apple-text-secondary)', lineHeight: 1.5 }}>
+                  <strong style={{ color: 'var(--apple-text-primary)' }}>Interests: </strong>
+                  {profileData.skills.extracurriculars.join(' • ')}
+                </div>
               </div>
             </div>
           </div>

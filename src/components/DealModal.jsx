@@ -81,13 +81,13 @@ export const DealModal = ({ project, onClose }) => {
               Financial Projections
             </button>
           )}
-          {(project.sourcesAndUses || project.valuationBridge || project.debtStructure || project.peerTable || project.dealTerms || project.precedentTransactions) && (
+          {(project.sourcesAndUses || project.valuationBridge || project.debtStructure || project.peerTable || project.dealTerms || project.precedentTransactions || project.debtSchedule) && (
             <button
               className={`apple-modal-tab-pill ${activeTab === 'structure' ? 'active' : ''}`}
               onClick={() => setActiveTab('structure')}
               id="modal-tab-structure"
             >
-              {project.sourcesAndUses ? 'Sources & Uses / Capital Structure' : project.dealTerms ? 'M&A Structure & Terms' : project.precedentTransactions ? 'Precedent Transactions' : 'Valuation Methodology'}
+              {project.sourcesAndUses ? 'Sources & Uses / Capital Structure' : project.dealTerms ? 'M&A Structure & Terms' : project.debtSchedule ? 'Debt & Deleveraging Schedule' : project.precedentTransactions ? 'Precedent Transactions' : 'Valuation Methodology'}
             </button>
           )}
           {project.sensitivityGrid && (

@@ -45,23 +45,34 @@ export const Footer = ({ onOpenCv }) => {
               </li>
               <li>
                 <a
-                  href="https://docs.google.com/spreadsheets/d/1XYt4_8lUHFFoRVV0Ui3mdQkX0jxMf_eX/edit?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="apple-inline-link"
-                >
-                  <span>Infosys DCF Sheet</span>
-                  <ArrowUpRight size={12} />
-                </a>
-              </li>
-              <li>
-                <a
                   href="https://docs.google.com/spreadsheets/d/1IUe0UQRZvAz-o12iACFCWCSIvDbdC8V1/edit?usp=share_link"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="apple-inline-link"
                 >
                   <span>PFC &amp; REC Merger Sheet</span>
+                  <ArrowUpRight size={12} />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://docs.google.com/spreadsheets/d/1AHu9rK8FCMzDrPfkKrVjisFIoS4Vb0mA/edit?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="apple-inline-link"
+                >
+                  <span>Tata Motors PV 3-Statement Sheet</span>
+                  <ArrowUpRight size={12} />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://docs.google.com/spreadsheets/d/1XYt4_8lUHFFoRVV0Ui3mdQkX0jxMf_eX/edit?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="apple-inline-link"
+                >
+                  <span>Infosys DCF &amp; Comps Sheet</span>
                   <ArrowUpRight size={12} />
                 </a>
               </li>
